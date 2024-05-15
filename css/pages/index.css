@@ -26,12 +26,114 @@ header img {
 .container{
   display: grid;
   grid-template-columns: 330px auto;
-  border: 5px solid skyblue;
+  border: 1px solid #111111;
+  height: 100vh;
 }
 
-.item-m{
-  background-color: aquamarine;
+main {
+  background-color: #040514;
+  color: white;
 }
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+#item-select {
+    display: inline-flex;
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: slategrey;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.selector {
+    width: 280px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+
+}
+
+
+#container-parrafo {
+    text-align: right;
+    margin-right: 70px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#pizarra {
+    background-color: #437faa;
+    height: 55%;
+    border-radius: 20px;
+    margin: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px 10px;
+
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+input[type="checkbox"]:checked + .star{
+    .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+      /* color: diseño  CAMBIAR LUEGO DE TENER LAS FUNCIONALIDADES LISTAS*/
+      color: yellow;
+      transition: 2s;
+  }
+
+.input-star-checkbox {
+    display: none;
+}
+
+.precio {
+    grid-template-columns: repeat(2, 48px);
+    grid-template-areas: 
+    "compra" "venta"
+    "precio1" "precio2"
+    ;
+}
+
+.item-1 {grid-area: compra;}
+.item-2 {grid-area: precio1}
+.item-3 {grid-area: venta;}
+.item-4 {grid-area: precio2;}
+
+
+.moneda {
+    display: inline;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 10px 0px 10px;
+    padding: 10px 20px;
+    width: 420px;
+}
+
+article.moneda > p, article.moneda div {
+    display: inline;
+}
+
 
 .barra-lateral{
     width: 270px;
@@ -69,6 +171,7 @@ header img {
     background-color: white;
     padding: 10px 20px;
     height: 300px;
+    border-radius: 10px;
 }
 
 #comentarios > h2 {
@@ -86,7 +189,7 @@ header img {
 #img-cliente {
     width: 140px;
     height: 140px;
-    padding-left: 40px;
+    margin-left: 45px;
     border-radius: 50%;
 }
 

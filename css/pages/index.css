@@ -15,7 +15,7 @@ body {
     background-repeat: no-repeat; / No repetir la imagen */
     font-size: 1rem;
     font-family: sans-serif;
-    color: #eabe3f;
+    color: #c89c19;
 }
 
 header img {
@@ -33,6 +33,7 @@ header img {
 main {
   background-color: #040514;
   color: white;
+  overflow-y: auto;
 }
 
 #content {
@@ -46,7 +47,7 @@ main {
     display: inline-flex;
     margin-left: 15px;
     border-radius: 10px;
-    background-color: slategrey;
+    background-color: #0f0819;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -57,7 +58,6 @@ main {
     margin-left: 20px;
     margin-top: 10px;
     border-radius: 5px;
-
 }
 
 
@@ -69,7 +69,7 @@ main {
 }
 
 #pizarra {
-    background-color: #437faa;
+    background-color: #0f0819;
     height: 55%;
     border-radius: 20px;
     margin: 0px 15px;
@@ -77,6 +77,7 @@ main {
     flex-direction: column;
     flex-wrap: wrap;
     gap: 15px 10px;
+    overflow-x: auto;
 
 }
 
@@ -123,9 +124,9 @@ input[type="checkbox"]:checked + .star{
 
 .moneda {
     display: inline;
-    border: 1px solid black;
+    border: 1px solid #3a3c54;
     border-radius: 10px;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 10px;
     padding: 10px 20px;
     width: 420px;
 }
@@ -134,21 +135,44 @@ article.moneda > p, article.moneda div {
     display: inline;
 }
 
+#advertencia {
+    margin-left: 15px;
+    margin-top: 20px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#contenedor-dolar-api {
+    text-align: right;
+    font-family: sans-serif;
+    margin-right: 15px;
+}
+
+.clase-dolar-api {
+    display: inline-block;
+    background-color: #060821;
+    padding: 3px;
+}
+
+#dolar-api {
+    background-color: #3730a3;
+    padding-left: 3px;
+}
+
 
 .barra-lateral{
-    width: 270px;
-    height: 440px;
+    width: 289px;
+    height: 639px;
     padding: 20px;
-    margin: 10px;
-    border: 1px solid lightblue;
-    border-radius: 10px;
-    background-color: lightblue;
+    margin: 0px;
+    background-color: #040514;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid #153448;
 }
 
 .botones-barra {
-    background-color: #437faa;
+    background-color: #153448;
     padding: 5px 20px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -168,14 +192,14 @@ article.moneda > p, article.moneda div {
 }
 
 #comentarios {
-    background-color: white;
+    background-color: #0f0819;
     padding: 10px 20px;
     height: 300px;
     border-radius: 10px;
 }
 
 #comentarios > h2 {
-    color: rgb(36, 35, 35);
+    color: rgb(181, 166, 166);
     font-size: 17px;
     margin-top: 20px;
     text-align: center;
@@ -184,7 +208,7 @@ article.moneda > p, article.moneda div {
 #comentarios > p {
     text-align: left;
     font-size: 14px;
-
+    color: white;
 }
 #img-cliente {
     width: 140px;
@@ -195,7 +219,6 @@ article.moneda > p, article.moneda div {
 
 table {
     border: 1px solid #eabe3f;
-    border-radius: 10px;
     background-color: #eabe3f;
     width: 100%;
 

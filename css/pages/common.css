@@ -46,28 +46,27 @@ header img {
   display: grid;
   grid-template-columns: 330px auto;
   border: 1px solid #111111;
-  height: 100vh;
+  height: 120vh;
 }
 
 main {
-  background-color: #040514;
+  background-color: #0a0e11;
   color: white;
   overflow-y: auto;
 }
 
 .barra-lateral{
   width: 289px;
-  height: 639px;
+  height: 120vh;
   padding: 20px;
   margin: 0px;
-  background-color: #040514;
+  background-color: #0a0e11;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #153448;
 }
 
 .botones-barra {
-  background-color: #153448;
+  background-color:  #151515;
   padding: 5px 20px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -76,25 +75,32 @@ main {
 
 .botones-barra:hover {
   background-color: #eabe3f;
-  transition: 1s;
+  transition: 0.5s;
   cursor: pointer;
+  .link-botones {
+    transition: 0.5s;
+    color: black;
+  }
 }
 
 .link-botones {
   text-decoration: none;
-  color: white;
+  color: gold;
   font-weight: 700;
 }
 
 #comentarios {
-  background-color: #0f0819;
+  background-color: #151515;
   padding: 10px 20px;
   height: 300px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
 }
 
 #comentarios > h2 {
-  color: rgb(181, 166, 166);
+  color: gold;
   font-size: 17px;
   margin-top: 20px;
   text-align: center;
@@ -103,21 +109,35 @@ main {
 #comentarios > p {
   text-align: left;
   font-size: 14px;
-  color: white;
+  color: gold;
 }
+
+.contenedor-cliente {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #img-cliente {
   width: 140px;
   height: 140px;
-  margin-left: 45px;
+  margin-left: 20%;
   border-radius: 50%;
 }
 
+.pruebafooter {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+footer {
+  margin-top: auto;
+}
 
 
 table {
-  border: 1px solid #eabe3f;
-  background-color: #eabe3f;
+  border: 1px solid #151515;
+  background-color: #151515;
   width: 100%;
 
 }
@@ -129,7 +149,7 @@ td, th {
 }
 
 tr,td > a {
-  color: #0A0E11;
+  color: gold;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 13px;
   font-weight: 400;

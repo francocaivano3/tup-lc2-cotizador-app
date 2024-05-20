@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/pages/informes.css">
     <link rel="stylesheet" href="./css/pages/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Informes</title> 
 </head>
-<body>
+<body><div class="pruebafooter">
     <header id="header">
       <h1>Cotizador Web</h1>
       <img src="./img/logo.jpg" alt="logo">
@@ -20,14 +21,17 @@
         <button class="botones-barra"><a href="#Informes" class="link-botones">Informes</a></button>
         <button class="botones-barra"><a href="#Contactenos" class="link-botones">Contacto</a></button>
         <div id="comentarios">
-          <img src="./img/cliente.jpg" alt="cliente" id="img-cliente">
+          <div class="contenedor-cliente">
+            <img src="./img/cliente.jpg" alt="cliente" id="img-cliente">
+          </div>
           <h2>Roger Medina</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita aperiam. Saepe earum inventore aperiam assumenda.</p>
         </div>
       </section>
       <main>
         <div class="migas-de-pan"><a href="index.html">Inicio / </a><a href="informes.html">Informes</a></div>
-        <h2>Informe</h2>
+      <h2>Informe</h2>
+      <div id="contenedor-select-grafico">
         <article id="item-select">
             <label id="label-select">Seleccione una moneda:</label>
             <div id="select-lupa">
@@ -44,14 +48,64 @@
                   <option value="10">Peso Chileno</option>
                   <option value="11">Peso Uruguayo</option>
                 </select>
-                <p id="lupa">🔎</p>
+                <i class="fa-solid fa-filter" id="filter"></i>
             </div>
           </article>
 
+        <img src="./img/grafico.png" alt="grafico de velas del dolar" class="imagen-grafico">        
+        </div>
 
+        <a href="" id="compartir-informacion">Compartir información</a><i class="fa-solid fa-envelope"></i>
+          
+<br>
 
+        <table id="tabla-informes">
+          <thead>
+            <th>Moneda</th>
+            <th>Fecha</th>
+            <th>Compra</th>
+            <th>Venta</th>
+            <th>Variación</th>
+          </thead>
 
-
+          <tbody>
+            <tr>
+              <td>Dólar</td>
+              <td>27/05/2024</td>
+              <td>$995</td>
+              <td>$1015</td>
+              <td><i class="fa-solid fa-arrow-down"></i></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>27/05/2024</td>
+              <td>$996</td>
+              <td>$1006</td>
+              <td><i class="fa-solid fa-arrow-up"></i></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>27/05/2024</td>
+              <td>$1355</td>
+              <td>$1419</td>
+              <td><i class="fa-solid fa-arrow-down"></i></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>27/05/2024</td>
+              <td>$1050</td>
+              <td>$1086</td>
+              <td><i class="fa-solid fa-arrow-up"></i></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>27/05/2024</td>
+              <td>$1000</td>
+              <td>$1200</td>
+              <td><i class="fa-solid fa-arrow-up"></i></td>
+            </tr>
+          </tbody>
+        </table>
 
 
 
@@ -62,7 +116,6 @@
       <table>
         <thead>
           <th>INSTITUCIONAL</th>
-        
           <th>ACCESOS</th>
             <th>CONTÁCTENOS</th>
             <th>DESARROLLADO POR</th>
@@ -102,6 +155,6 @@
         </tbody>
       </table>
     </footer>
-
+</div>
 </body>
 </html>

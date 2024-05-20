@@ -1,11 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/pages/common.css" />
+    <link rel="stylesheet" href="./css/pages/contacto.css" />
     <title>Document</title>
-</head>
-<body>
-    <p>Home ></p><p>Contacto</p>
-</body>
+  </head>
+  <body>
+    <h1>Contacto Web Cotizaciones</h1>
+    <section class="contacto">
+      <article id="datos-contacto">
+        <div id="container-contacto">
+          <form action="./action.python">
+            <h2 id="h2">Datos de Contacto</h2>
+            <label for="nombre">Nombre:</label>
+            <br />
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Pedro"
+              required
+              maxlength="40"
+            />
+            <br />
+            <br />
+            <label for="e-mail">Email:</label>
+            <br />
+            <input
+              type="email"
+              id="e-mail"
+              name="e-mail"
+              placeholder="pedro@gmail.com"
+              required
+            />
+            <br />
+            <br />
+            <label for="mensaje" id="label-mensaje">Mensaje:</label>
+            <br />
+            <textarea name="mensaje" id="mensaje" required></textarea>
+            <br />
+            <button id="limpiar">Limpiar</button>
+            <button id="enviar">Enviar</button>
+          </form>
+        </div>
+      </article>
+      <article id="datos-extra">
+        <p>
+          Si tiene alguna sugerencia o inconveniente por favor complete el
+          siguiente formulario y envíenoslo. Lo contactaremosa la brevedad.
+        </p>
+        <br />
+        <p>
+          Esta web esta desarrollada utilizando
+          <a href="https://dolarapi.com/">https://dolarapi.com/</a>
+        </p>
+        <div id="contenedor-datos-contacto">
+          <div id="datos-de-contacto">
+            <h2>Datos de contacto</h2>
+            <p>Universidad Tecnológica Nacional</p>
+            <p>ZEBALLOS 1341 - S2000BQA</p>
+            <p>ROSARIO</p>
+            <p>0341 - 444444</p>
+          </div>
+          <div id="utn-logo">
+            <img src="./img/header.jpg" alt="UTN-Logo" />
+          </div>
+        </div>
+      </article>
+    </section>
+  </body>
 </html>

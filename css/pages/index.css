@@ -101,7 +101,7 @@ input[type="checkbox"]:checked + .star{
       }
       /* color: diseño  CAMBIAR LUEGO DE TENER LAS FUNCIONALIDADES LISTAS*/
       color: yellow;
-      transition: 2s;
+      transition: 1s;
   }
 
 .input-star-checkbox {

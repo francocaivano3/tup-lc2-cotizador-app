@@ -1,0 +1,253 @@
+/* html body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: black;
+}
+
+h1 {
+  vertical-align: middle;
+  text-align: center;
+  color: gold;
+}
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 15vh;
+  background-size: cover;
+  background-color: #0a0e11;
+  background-position: center; 
+  font-size: 1rem;
+  font-family: sans-serif;
+  color: #c89c19;
+}
+
+.conteiner {
+  background-color: rgb(54, 46, 0);
+  border-radius: 20px;
+  height: 75%;
+}
+
+.table-main {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.migas-de-pan{
+    background-color: white;
+}
+
+#fecha {
+  color: black;
+  background-color: gold;
+}
+#thead-conteiner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+td {
+  vertical-align: middle;
+  background-color: black;
+  border-left: 1px solid gold;
+  text-align: center;
+  color: gold;
+}
+
+#td-numeros {
+  color: green;
+}
+
+#goma {
+  color: red;
+  cursor: pointer;
+}
+
+.fa-print {
+  text-align: end;
+  color: gold;
+  font-size: 28px;
+  float: right;
+  padding-right: 70px;
+  cursor: pointer;
+}
+.migas {
+  text-align: end;
+  width: 50%;
+  float: right;
+  margin-top: -655px;
+  margin-right: 50px;
+  color: gold;
+}
+
+.link-migas {
+  color: black;
+  text-decoration: none;
+  color: gold;
+}
+.link-migas:hover {
+  transition: 1s;
+  color: gray;
+}
+.caja {
+  border: 1px solid gold;
+  border-radius: 20px;
+  width: 70%;
+  float: right;
+  margin-top: -620px;
+  height: 600px;
+  margin-right: 30px;
+}
+
+#img-cliente {
+  width: 140px;
+  height: 140px;
+  margin-left: 45px;
+  border-radius: 50%;
+}
+header img {
+  height: 100%;
+  width: 100px;
+}
+.barra-lateral {
+  width: 289px;
+  height: 639px;
+  padding: 20px;
+  margin: 0px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid gold;
+}
+
+.botones-barra {
+  background-color: black;
+  border: 1px solid gold;
+  padding: 5px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.botones-barra:hover {
+  background-color: gold;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.link-botones {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+#comentarios {
+  background-color: gold;
+  padding: 10px 20px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+#comentarios > h2 {
+  color: black(181, 166, 166);
+  font-size: 17px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#comentarios > p {
+  text-align: left;
+  font-size: 14px;
+  color: black;
+}
+
+.table-footer {
+  border: 1px solid gold;
+  background-color: gold;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#td-footer {
+  background-color: black;
+  padding: 5px;
+  border: none;
+  color: gold;
+}
+
+#link-footer {
+  color: gold;
+} */
+
+#contenedor-titulo-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    color: #eabe3f;
+}
+
+#titulo-main {
+    display: flex;
+    align-self: center;
+}
+
+#imprimir {
+    background-color: #0a0e11;
+    border: none;
+    color: #eabe3f;
+    font-size: 20px;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    padding-right: 70px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+#table-container {
+    overflow-y: auto;
+}
+
+table#table-main {
+    border: 1px solid #151515;
+    background-color: #151515;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    border-radius: 5px;
+  }
+  
+  #table-main td, #table-main th {
+    padding: 10px;
+    text-align: left;
+    width: 25%;
+  }
+  
+  #table-main tr  {
+    color: #eabe3f;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  #table-main #td-numeros {
+    color: green;
+  }
+  
+  #table-main tr > td > p {
+    font-family:sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  
+  #table-main  button {
+    cursor: pointer;
+    background-color: #151515;
+    border: none;
+    color: #eabe3f;
+  }

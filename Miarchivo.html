@@ -2,162 +2,231 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/pages/miarchivo.css">
+    <link rel="stylesheet" href="./css/pages/common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="mi_archivo2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Mi Archivo</title> 
 </head>
-<body>
-    <head>
-        <h1>MI ARCHIVO</h1>
-        <p class="impresora"><i class="fas fa-print"></i></p>
-    </head>
-    <div class="conteiner">
-        <table class="conteiner">
-            <thead> 
-                <th id="fecha_th">FECHA</th>
-                <th id="moneda">MONEDA</th>
-                <th id="compra">COMPRA</th>
-                <th id="venta">VENTA</th>
-                <th id="accion">ACCION</th>
+<body><div class="pruebafooter">
+    <header id="header">
+      <h1>Cotizador Web</h1>
+      <img src="./img/logo.jpg" alt="logo">
+    </header>
+    <section class="container">
+      <section class="barra-lateral">
+        <button class="botones-barra"><a href="./index.html" class="link-botones">Inicio</a></button>
+        <button class="botones-barra"><a href="./miarchivo.html" class="link-botones">Archivo</a></button>
+        <button class="botones-barra"><a href="./informes.html" class="link-botones">Informes</a></button>
+        <button class="botones-barra"><a href="./Contacto.html" class="link-botones">Contacto</a></button>
+        <div id="comentarios">
+          <div class="contenedor-cliente">
+            <img src="./img/cliente.jpg" alt="cliente" id="img-cliente">
+          </div>
+          <h2>Roger Medina</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita aperiam. Saepe earum inventore aperiam assumenda.</p>
+        </div>
+      </section>
+      <main>
+        <div class="migas-de-pan"><a href="index.html">Inicio / </a><a href="miarchivo.html">Mi Archivo</a></div>
+        <div id="contenedor-titulo-logo">
+            <h2 id="titulo-main">Mi Archivo</h2>
+            <button id="imprimir"><i class="fas fa-print"></i></button>
+        </div>
+        
+        <div id="table-container">
+            <table id="table-main">
+                <thead > 
+                    <th id="thead-conteiner">FECHA</th>
+                    <th id="thead-conteiner">MONEDA</th>
+                    <th id="thead-conteiner">COMPRA</th>
+                    <th id="thead-conteiner">VENTA</th>
+                    <th id="thead-conteiner">ACCION</th>
+                </thead>
+              
+              <tbody>
+                <tr  > <td id="fecha">15/04/2024</td>
+                    <td colspan="4" id="fecha"></td>
+                    
+              </tr>
+      
+              <tr>
+                  <td ><br></td>
+                  <td>DÓLAR BLUE</td>
+                  <td id="td-numeros">$995</td>
+                  <td id="td-numeros">$1015</td>
+                  <td id="goma"> <button><i class="fas fa-eraser"></i></button></td>
+                  
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR MEP</td>
+                  <td id="td-numeros">$996.09</td>
+                  <td id="td-numeros">$1000.06</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+                  
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR TARJETA</td>
+                  <td id="td-numeros">$1355.2</td>
+                  <td id="td-numeros">$1419.2</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR CRIPTO</td>
+                  <td id="td-numeros">$1050</td>
+                  <td id="td-numeros">$1086</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>EURO</td>
+                  <td id="td-numeros">$1000</td>
+                  <td id="td-numeros">$1200</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr><td id="fecha">14/04/2024</td>
+                  <td id="fecha"></td>
+                  <td id="fecha"></td>
+                  <td id="fecha"></td>
+                  <td id="fecha"></td></tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR BLUE</td>
+                  <td id="td-numeros">$995</td>
+                  <td id="td-numeros">$1015</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+                  
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR MEP</td>
+                  <td id="td-numeros">$996.09</td>
+                  <td id="td-numeros">$1000.06</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+                  
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR TARJETA</td>
+                  <td id="td-numeros">$1355.2</td>
+                  <td id="td-numeros">$1419.2</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR CRIPTO</td>
+                  <td id="td-numeros">$1050</td>
+                  <td id="td-numeros">$1086</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr>
+                  <td ><br></td>
+                  <td>EURO</td>
+                  <td id="td-numeros">$1000</td>
+                  <td id="td-numeros">$1200</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr><td id="fecha">13/04/2024</td>
+                  <td id="fecha"></td>
+                  <td id="fecha"></td>
+                  <td id="fecha"></td>
+                  <td id="fecha"></td></tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR BLUE</td>
+                  <td id="td-numeros">$995</td>
+                  <td id="td-numeros">$1015</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+                  
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR MEP</td>
+                  <td id="td-numeros">$996.09</td>
+                  <td id="td-numeros">$1000.06</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+                  
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR TARJETA</td>
+                  <td id="td-numeros">$1355.2</td>
+                  <td id="td-numeros">$1419.2</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>DÓLAR CRIPTO</td>
+                  <td id="td-numeros">$1050</td>
+                  <td id="td-numeros">$1086</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              <tr>
+                  <td><br></td>
+                  <td>EURO</td>
+                  <td id="td-numeros">$1000</td>
+                  <td id="td-numeros">$1200</td>
+                  <td id="goma"><button><i class="fas fa-eraser"></i></button></td>
+              </tr>
+              
+              <tr>
+                <th colspan="4" id="footer"></th>
+              </tr>
+              </tbody>  
+            </table>
+        </div>
+            
+            
+        </main>
+    </section>
+    <footer>
+        <table class="table-footer">
+            <thead>
+                <th>INSTITUCIONAL</th>
+                <th>ACCESOS</th>
+                <th>CONTÁCTENOS</th>
+                <th>DESARROLLADO POR</th>
             </thead>
-          
-          <tbody>
-            <tr  > <td id="fecha">15/04/2024</td>
-                <td colspan="4" id="fecha"></td>
+            <tbody>
+                <tr>
+                    <td>> <a href="">¿Quiénes somos?</a></td>
+                    <td>> <a href="">Inicio</a></td>
+                    <td>Universidad Tecnológica Nacional</td>
+                    <td>Nombre y apellido</td>
+                </tr>
                 
-          </tr>
-  
-          <tr>
-              <td ><br></td>
-              <td>DÓLAR BLUE</td>
-              <td>$995</td>
-              <td>$1015</td>
-              <td> <i class="fas fa-eraser"></i></td>
-              
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR MEP</td>
-              <td>$996.09</td>
-              <td>1000.06</td>
-              <td><i class="fas fa-eraser"></i></td>
-              
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR TARJETA</td>
-              <td>$1355.2</td>
-              <td>$1419.2</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR CRIPTO</td>
-              <td>$1050</td>
-              <td>$1086</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>EURO</td>
-              <td>$1000</td>
-              <td>$1200</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr><td id="fecha">14/04/2024</td>
-              <td id="fecha"></td>
-              <td id="fecha"></td>
-              <td id="fecha"></td>
-              <td id="fecha"></td></tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR BLUE</td>
-              <td>$995</td>
-              <td>$1015</td>
-              <td> <i class="fas fa-eraser"></i></td>
-              
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR MEP</td>
-              <td>$996.09</td>
-              <td>1000.06</td>
-              <td><i class="fas fa-eraser"></i></td>
-              
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR TARJETA</td>
-              <td>$1355.2</td>
-              <td>$1419.2</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR CRIPTO</td>
-              <td>$1050</td>
-              <td>$1086</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr>
-              <td ><br></td>
-              <td>EURO</td>
-              <td>$1000</td>
-              <td>$1200</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr><td id="fecha">13/04/2024</td>
-              <td id="fecha"></td>
-              <td id="fecha"></td>
-              <td id="fecha"></td>
-              <td id="fecha"></td></tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR BLUE</td>
-              <td>$995</td>
-              <td>$1015</td>
-              <td> <i class="fas fa-eraser"></i></td>
-              
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR MEP</td>
-              <td>$996.09</td>
-              <td>1000.06</td>
-              <td><i class="fas fa-eraser"></i></td>
-              
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR TARJETA</td>
-              <td>$1355.2</td>
-              <td>$1419.2</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>DÓLAR CRIPTO</td>
-              <td>$1050</td>
-              <td>$1086</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr>
-              <td><br></td>
-              <td>EURO</td>
-              <td>$1000</td>
-              <td>$1200</td>
-              <td><i class="fas fa-eraser"></i></td>
-          </tr>
-          <tr>
-            <th colspan="4" id="footer"></th>
-          </tr>
-          </tbody>  
-           
-           
-        </table>
-    </div>
-    
+                <tr>
+                    <td>> <a href="">Socios estratégicos</a></td>
+                    <td>> <a href="">Mi Archivo</a></td>
+                    <td>Zeballos 1341</td>
+                    <td>TUP07 - 2024</a></td>
+                </tr>
 
+                <tr>
+                    <td>> <a href="">Trabaje con nosotros</a></td>
+                    <td>> <a href="">Informes</a></td>
+                    <td>Rosario</td>
+                    <td><a href="">¡Escríbanos!</a></td>
+                </tr>
+                
+                <tr>
+                    <td>> <a href="">Ayuda</a></td>
+                    <td>> <a href="">Contáctenos</a></td>
+                    <td>03414481871</td>
+                    <td>aaa@gmail.com</td>
+                </tr>
+                
+                <tr>
+                    <td colspan="4"><p>TUP - Cátedra de laboratorio de computacion 2 - Año 2024 </p></td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
+</div>
+</div>         
 </body>
 </html>

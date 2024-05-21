@@ -1,74 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/pages/common.css" />
-    <link rel="stylesheet" href="./css/pages/contacto.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Contacto Web Cotizaciones</h1>
-    <section class="contacto">
-      <article id="datos-contacto">
-        <div id="container-contacto">
-          <form action="./action.python">
-            <h2 id="h2">Datos de Contacto</h2>
-            <label for="nombre">Nombre:</label>
-            <br />
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              placeholder="Pedro"
-              required
-              maxlength="40"
-            />
-            <br />
-            <br />
-            <label for="e-mail">Email:</label>
-            <br />
-            <input
-              type="email"
-              id="e-mail"
-              name="e-mail"
-              placeholder="pedro@gmail.com"
-              required
-            />
-            <br />
-            <br />
-            <label for="mensaje" id="label-mensaje">Mensaje:</label>
-            <br />
-            <textarea name="mensaje" id="mensaje" required></textarea>
-            <br />
-            <button id="limpiar">Limpiar</button>
-            <button id="enviar">Enviar</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/pages/contacto.css">
+    <link rel="stylesheet" href="./css/pages/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Contacto</title> 
+</head>
+<body><div class="pruebafooter">
+    <header id="header">
+      <h1>Cotizador Web</h1>
+      <img src="./img/logo.jpg" alt="logo">
+    </header>
+    <section class="container">
+      <section class="barra-lateral">
+        <button class="botones-barra"><a href="./index.html" class="link-botones">Inicio</a></button>
+        <button class="botones-barra"><a href="./miarchivo.html" class="link-botones">Archivo</a></button>
+        <button class="botones-barra"><a href="./informes.html" class="link-botones">Informes</a></button>
+        <button class="botones-barra"><a href="./Contacto.html" class="link-botones">Contacto</a></button>
+        <div id="comentarios">
+          <div class="contenedor-cliente">
+            <img src="./img/cliente.jpg" alt="cliente" id="img-cliente">
+          </div>
+          <h2>Roger Medina</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita aperiam. Saepe earum inventore aperiam assumenda.</p>
+        </div>
+      </section>
+      <main>
+        <div class="migas-de-pan"><a href="index.html">Inicio / </a><a href="Contacto.html">Contacto</a></div>
+        <h2 id="titulo-main">Contacto Web Cotizaciones</h2>
+        <div id="formulario-y-contacto">
+
+        
+        <div id="formulario-contacto">
+          <form action="" id="form">
+            <h2 id="titulo-formulario">DATOS DE CONTACTO</h2>
+            <label for="name" id="label-form">Nombre:</label>
+            <br>
+            <input type="text" name="name" id="name" placeholder="Juan Pérez" required>
+            <br>
+            <label for="email" id="label-form">Email:</label>
+            <br>
+            <input type="email" name="email" id="email" placeholder="juanperez@gmail.com" required>
+            <br>
+            <label for="message" id="label-form">Mensaje:</label>
+            <br>
+            <textarea name="message" id="message" placeholder="Deje un mensaje..."></textarea>
+            <br>
+            <button type="reset">Limpiar</button>
+            <button type="submit">Enviar</button>
           </form>
         </div>
-      </article>
-      <article id="datos-extra">
-        <p>
-          Si tiene alguna sugerencia o inconveniente por favor complete el
-          siguiente formulario y envíenoslo. Lo contactaremosa la brevedad.
-        </p>
-        <br />
-        <p>
-          Esta web esta desarrollada utilizando
-          <a href="https://dolarapi.com/">https://dolarapi.com/</a>
-        </p>
-        <div id="contenedor-datos-contacto">
-          <div id="datos-de-contacto">
-            <h2>Datos de contacto</h2>
-            <p>Universidad Tecnológica Nacional</p>
-            <p>ZEBALLOS 1341 - S2000BQA</p>
-            <p>ROSARIO</p>
-            <p>0341 - 444444</p>
+
+        <div id="contenedor-informacion">
+        <p class="informacion">Si tiene alguna sugerencia o inconveniente por favor complete el siguiente formulario y envíenoslo. Lo contactaremos en la brevedad.</p>
+        <p class="informacion">Esta web fue desarrollado utilizando <a href="https://dolarapi.com" id="dolar-api" target="_blank">DolarApi</a> </p>
+
+
+        <div id="datos-contacto-utn">
+          <div class="datos-contacto">
+          <h2>DATOS DE CONTACTO</h2>
+          <p>Universidad Tecnológica Nacional</p>
+          <p>Zeballos 1341 - S2000BQA</p>
+          <p>Rosario</p>
+          <p>0341-4481871</p>
           </div>
-          <div id="utn-logo">
-            <img src="./img/header.jpg" alt="UTN-Logo" />
-          </div>
+          
+          <div id="logo-utn">  
+          <img src="./img/logo-utn.png" alt="logo-utn" id="logo-utn">
+          
         </div>
-      </article>
-    </section>
-  </body>
+        </div>
+
+        </div>
+
+</div>
+    </main>
+              </section>
+              <footer>
+      <table class="table-footer">
+        <thead>
+          <th>INSTITUCIONAL</th>
+          <th>ACCESOS</th>
+            <th>CONTÁCTENOS</th>
+            <th>DESARROLLADO POR</th>
+        </thead>
+        <tbody>
+            <tr>
+              <td>> <a href="">¿Quiénes somos?</a></td>
+              <td>> <a href="">Inicio</a></td>
+              <td>Universidad Tecnológica Nacional</td>
+              <td>Nombre y apellido</td>
+            </tr>
+
+            <tr>
+              <td>> <a href="">Socios estratégicos</a></td>
+              <td>> <a href="">Mi Archivo</a></td>
+              <td>Zeballos 1341</td>
+              <td>TUP07 - 2024</a></td>
+            </tr>
+
+            <tr>
+                <td>> <a href="">Trabaje con nosotros</a></td>
+                <td>> <a href="">Informes</a></td>
+                <td>Rosario</td>
+                <td><a href="">¡Escríbanos!</a></td>
+            </tr>
+
+            <tr>
+                <td>> <a href="">Ayuda</a></td>
+                <td>> <a href="">Contáctenos</a></td>
+                <td>03414481871</td>
+                <td>aaa@gmail.com</td>
+            </tr>
+
+            <tr>
+                <td colspan="4"><p>TUP - Cátedra de laboratorio de computacion 2 - Año 2024 </p></td>
+            </tr>
+        </tbody>
+      </table>
+    </footer>
+</div>
+</body>
 </html>

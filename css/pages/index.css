@@ -15,7 +15,7 @@ body {
     background-repeat: no-repeat; / No repetir la imagen */
     font-size: 1rem;
     font-family: sans-serif;
-    color: #c89c19;
+    color: var(--color-titulo);
 }
 
 header img {
@@ -47,9 +47,10 @@ main {
     display: inline-flex;
     margin-left: 15px;
     border-radius: 10px;
-    background-color: #0f0819;
+    background-color: #151515;
     padding-left: 15px;
     padding-right: 15px;
+    color: var(--color-titulo);
 }
 
 .selector {
@@ -69,8 +70,8 @@ main {
 }
 
 #pizarra {
-    background-color: #0f0819;
-    height: 55%;
+    background-color: #151515;
+    height: 45%;
     border-radius: 20px;
     margin: 0px 15px;
     display: flex;
@@ -78,7 +79,6 @@ main {
     flex-wrap: wrap;
     gap: 15px 10px;
     overflow-x: auto;
-
 }
 
 
@@ -100,7 +100,7 @@ input[type="checkbox"]:checked + .star{
         'opsz' 24
       }
       /* color: diseño  CAMBIAR LUEGO DE TENER LAS FUNCIONALIDADES LISTAS*/
-      color: yellow;
+      color: goldenrod;
       transition: 1s;
   }
 
@@ -108,7 +108,7 @@ input[type="checkbox"]:checked + .star{
     display: none;
 }
 
-.precio {
+/* .precio {
     grid-template-columns: repeat(2, 48px);
     grid-template-areas: 
     "compra" "venta"
@@ -119,20 +119,55 @@ input[type="checkbox"]:checked + .star{
 .item-1 {grid-area: compra;}
 .item-2 {grid-area: precio1}
 .item-3 {grid-area: venta;}
-.item-4 {grid-area: precio2;}
+.item-4 {grid-area: precio2;} */
 
 
 .moneda {
-    display: inline;
-    border: 1px solid #3a3c54;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-titulo);
     border-radius: 10px;
     margin: 10px 10px;
-    padding: 10px 20px;
+    padding: 0px 20px;
     width: 420px;
+    justify-content: space-between;
 }
 
 article.moneda > p, article.moneda div {
-    display: inline;
+    display: inline-flex;
+    padding-top: 6px;
+    margin-right: auto;
+    color: var(--color-titulo);
+}
+
+
+.precio {
+ 
+    width: 170px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.precio-compra {
+    display: flex;
+    flex-direction: column; 
+}
+
+.precio-venta {
+    display: flex;
+    flex-direction: column;
+}
+
+.precio-compra > p {
+    /* display: block; */
+}
+
+
+.moneda :last-child {
+    margin-top: 2px;
+    align-self: center;
 }
 
 #advertencia {
@@ -160,66 +195,10 @@ article.moneda > p, article.moneda div {
 }
 
 
-.barra-lateral{
-    width: 289px;
-    height: 639px;
-    padding: 20px;
-    margin: 0px;
-    background-color: #040514;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid #153448;
-}
-
-.botones-barra {
-    background-color: #153448;
-    padding: 5px 20px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border: none;
-}
-
-.botones-barra:hover {
-    background-color: #eabe3f;
-    transition: 1s;
-    cursor: pointer;
-}
-
-.link-botones {
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-}
-
-#comentarios {
-    background-color: #0f0819;
-    padding: 10px 20px;
-    height: 300px;
-    border-radius: 10px;
-}
-
-#comentarios > h2 {
-    color: rgb(181, 166, 166);
-    font-size: 17px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-#comentarios > p {
-    text-align: left;
-    font-size: 14px;
-    color: white;
-}
-#img-cliente {
-    width: 140px;
-    height: 140px;
-    margin-left: 45px;
-    border-radius: 50%;
-}
 
 table {
-    border: 1px solid #eabe3f;
-    background-color: #eabe3f;
+    border: 1px solid var(--color-titulo);
+    background-color: var(--color-titulo);
     width: 100%;
 
 }

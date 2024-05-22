@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/pages/index.css">
-    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/pages/common.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Cotizador Web</title> 
 </head>
 <body>
+  <div class="pruebafooter">
     <header id="header">
       <h1>Cotizador Web</h1>
       <img src="./img/logo.jpg" alt="logo">
     </header>
     <section class="container">
       <section class="barra-lateral">
-        <button class="botones-barra"><a href="./index.html" class="link-botones">Inicio</a></button>
-        <button class="botones-barra"><a href="./miarchivo.html" class="link-botones">Archivo</a></button>
-        <button class="botones-barra"><a href="./informes.html" class="link-botones">Informes</a></button>
-        <button class="botones-barra"><a href="./Contacto.html" class="link-botones">Contacto</a></button>
+        <button class="botones-barra" id="inicio"><a href="./index.html" class="link-botones">Inicio</a></button>
+        <button class="botones-barra" id="archivo"><a href="./miarchivo.html" class="link-botones">Archivo</a></button>
+        <button class="botones-barra" id="informes"><a href="./informes.html" class="link-botones">Informes</a></button>
+        <button class="botones-barra" id="contacto"><a href="./Contacto.html" class="link-botones">Contacto</a></button>
         <div id="comentarios">
           <img src="./img/cliente.jpg" alt="cliente" id="img-cliente">
           <h2>Roger Medina</h2>
@@ -27,7 +28,7 @@
       </section>
       <main>
         <div id="content">
-          <h2>Pizarra de cotizaciones</h2>
+          <h2 class="titulo-main">Pizarra de cotizaciones</h2>
         </div>
         <article id="item-select">
           <h3>Seleccione una moneda:</h3>
@@ -50,45 +51,92 @@
         <div id="container-parrafo"><p id="parrafo">Datos Actualizados al 15/5/2024 17:30hs</p></div>
         
         <section id="pizarra">
-          <article class="moneda"><p class="title-article-moneda">OFICIAL</p> <div class="precio">
-          <div class="item-1">COMPRA</div>
-          <div class="item-2">$1000</div>
-          <div class="item-3">VENTA</div>
-          <div class="item-4">$1030</div></div> <input type="checkbox" id="star-checkbox1" class="input-star-checkbox"><label for="star-checkbox1" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
-          <article class="moneda"><p class="title-article-moneda">BLUE</p> <div class="precio">
-          <div>COMPRA</div>
-          <div>$1000</div>
-          <div>VENTA</div>
-          <div>$1030</div></div> <input type="checkbox" id="star-checkbox2" class="input-star-checkbox"><label for="star-checkbox2" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
-          <article class="moneda"><p class="title-article-moneda">TARJETA</p> <div class="precio">
-          <div>COMPRA</div>
-          <div>$1000</div>
-          <div>VENTA</div>
-          <div>$1030</div>
-          </div> 
+          <article class="moneda"><p class="title-article-moneda">OFICIAL</p>
+            <div class="precio">
+              <div class="precio-compra">
+                <p>COMPRA</p>
+              <p>$1000</p>
+              </div>
+              <div class="precio-venta">
+                <p>VENTA</p>
+              <p>$1030</p>
+              </div>
+              </div>
+          <input type="checkbox" id="star-checkbox1" class="input-star-checkbox"><label for="star-checkbox1" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <article class="moneda"><p class="title-article-moneda">BLUE</p>
+            <div class="precio">
+              <div class="precio-compra">
+                <p>COMPRA</p>
+              <p>$1000</p>
+              </div>
+              <div class="precio-venta">
+                <p>VENTA</p>
+              <p>$1030</p>
+              </div>
+              </div>
+          <input type="checkbox" id="star-checkbox2" class="input-star-checkbox"><label for="star-checkbox2" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <article class="moneda"><p class="title-article-moneda">TARJETA</p>
+            <div class="precio">
+              <div class="precio-compra">
+                <p>COMPRA</p>
+              <p>$1000</p>
+              </div>
+              <div class="precio-venta">
+                <p>VENTA</p>
+              <p>$1030</p>
+              </div>
+              </div>
           <input type="checkbox" id="star-checkbox3" class="input-star-checkbox"><label for="star-checkbox3" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
-          <article class="moneda"><p class="title-article-moneda">MEP</p> <div class="precio">
-          <div>COMPRA</div>
-          <div>$1000</div>
-          <div>VENTA</div>
-          <div>$1030</div>
-          </div> 
+          <article class="moneda"><p class="title-article-moneda">MEP</p>
+            <div class="precio">
+              <div class="precio-compra">
+                <p>COMPRA</p>
+              <p>$1000</p>
+              </div>
+              <div class="precio-venta">
+                <p>VENTA</p>
+              <p>$1030</p>
+              </div>
+              </div>
           <input type="checkbox" id="star-checkbox4" class="input-star-checkbox"><label for="star-checkbox4" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
-          <article class="moneda"><p class="title-article-moneda">CCL</p> <div class="precio">
-          <div>COMPRA</div>
-          <div>$1000</div>
-          <div>VENTA</div>
-          <div>$1030</div>
-          </div> 
+          <article class="moneda"><p class="title-article-moneda">CCL</p>
+            <div class="precio">
+              <div class="precio-compra">
+                <p>COMPRA</p>
+              <p>$1000</p>
+              </div>
+              <div class="precio-venta">
+                <p>VENTA</p>
+              <p>$1030</p>
+              </div>
+              </div>
           <input type="checkbox" id="star-checkbox5" class="input-star-checkbox"><label for="star-checkbox5" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
-          <article class="moneda"><p class="title-article-moneda">CRIPTO</p> <div class="precio">
-          <div>COMPRA</div>
-          <div>$1000</div>
-          <div>VENTA</div>
-          <div>$1030</div>
-          </div>
+          <article class="moneda"><p class="title-article-moneda">CRIPTO</p>
+            <div class="precio">
+              <div class="precio-compra">
+                <p>COMPRA</p>
+              <p>$1000</p>
+              </div>
+              <div class="precio-venta">
+                <p>VENTA</p>
+              <p>$1030</p>
+              </div>
+              </div>
           <input type="checkbox" id="star-checkbox6" class="input-star-checkbox"><label for="star-checkbox6" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>          
-      </section>
+          <article class="moneda">
+            <p class="title-article-moneda">CRIPTO</p>
+            <div class="precio">
+            <div class="precio-compra">
+              <p>COMPRA</p>
+            <p>$1000</p>
+            </div>
+            <div class="precio-venta">
+              <p>VENTA</p>
+            <p>$1030</p>
+            </div>
+            </div>
+            <input type="checkbox" id="star-checkbox6" class="input-star-checkbox"><label for="star-checkbox6" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>          
+        </section>
                   
       <p id="advertencia">Haga click en la estrella para guardar los datos de la cotización en sus favoritos.</p>
       <div id="contenedor-dolar-api"><p id="datos-obtenidos" class="clase-dolar-api">Datos obtenidos de</p><p id="dolar-api" class="clase-dolar-api">DolarApi.com</p></div>            
@@ -138,6 +186,6 @@
         </tbody>
       </table>
     </footer>
-
+</div>
 </body>
 </html>

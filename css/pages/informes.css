@@ -10,7 +10,7 @@
 
 h2 {
     text-align: center;
-    color: #B6862E;
+    color: var(--color-titulo);
     font-size: 25px;
 }
 
@@ -20,7 +20,7 @@ h2 {
     margin-top: 10px;
     font-size: 15px;
     padding-bottom: 8px;
-    color: gold;
+    color: var(--color-titulo);
 }
 
 
@@ -31,7 +31,7 @@ h2 {
     margin-left: 25px;
     border-radius: 10px;
     background-color: #1A1A1A;
-    color: gold;
+    color: var(--color-titulo);
     padding-left: 25px;
     padding-right: 15px;
     max-width: 300px;
@@ -47,9 +47,9 @@ h2 {
     margin-bottom: 10px;
     border-radius: 5px;
     display: inline-block;
-    background-color: #1A1A1A;
-    border: 1px solid #B6862E;
-    color: gold;
+    background-color: #cf9833;
+    border: 1px solid #151515;
+    color: black;
 }
 
 
@@ -62,7 +62,7 @@ h2 {
 #filter {
     margin-left: 15px;
     font-size: 20px;
-    color: goldenrod;
+    color: var(--color-titulo);
 }
 
 
@@ -77,14 +77,14 @@ h2 {
     
 #compartir-informacion {
     margin-left: 25px;
-    text-decoration: underline gold;
-    color: gold;
+    text-decoration: underline var(--color-titulo);
+    color: var(--color-titulo);
     font-weight: 600;
 }
 
 .fa-envelope {
     margin-left: 5px;
-    color: goldenrod;
+    color: var(--color-titulo);
 }
 
 #tabla-informes {
@@ -100,10 +100,11 @@ h2 {
 }
 
 #tabla-informes  th, #tabla-informes td {
-    color: gold;
+    color: var(--color-titulo);
     text-align: center;
     width: 20%;
 }
+
 
 .fa-arrow-down {
     color: red;

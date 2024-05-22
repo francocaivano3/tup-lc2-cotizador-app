@@ -2,6 +2,11 @@
   font-family: sans-serif;
 }
 
+:root {
+  --color-titulo: #eabe3f;
+
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -21,7 +26,7 @@ body {
 }
 
 .migas-de-pan a:hover {
-  color: #eabe3f;
+  color: var(--color-titulo);
   transition: 0.5s;
 }
 
@@ -37,7 +42,7 @@ body {
     background-position: center; 
     font-size: 1rem;
     font-family: sans-serif;
-    color: #eabe3f;
+    color: var(--color-titulo);
 }
 
 header img {
@@ -59,6 +64,10 @@ main {
   overflow-y: auto;
 }
 
+.titulo-main {
+  color: var(--color-titulo);
+}
+
 .barra-lateral{
   width: 289px;
   border-right: 1px solid #151515;
@@ -78,8 +87,10 @@ main {
   border: none;
 }
 
+
+
 .botones-barra:hover {
-  background-color: #eabe3f;
+  background-color: var(--color-titulo);
   transition: 0.5s;
   cursor: pointer;
   .link-botones {
@@ -90,7 +101,7 @@ main {
 
 .link-botones {
   text-decoration: none;
-  color: #eabe3f;
+  color: var(--color-titulo);
   font-weight: 700;
 }
 
@@ -107,7 +118,7 @@ main {
 }
 
 #comentarios > h2 {
-  color: #eabe3f;
+  color: var(--color-titulo);
   font-size: 17px;
   margin-top: 20px;
   text-align: center;
@@ -116,7 +127,7 @@ main {
 #comentarios > p {
   text-align: left;
   font-size: 14px;
-  color: #eabe3f;
+  color: var(--color-titulo);
 }
 
 .contenedor-cliente {
@@ -155,8 +166,10 @@ table.table-footer {
   width: 25%;
 }
 
+
+
 .table-footer tr, .table-footer td > a {
-  color: #eabe3f;
+  color: var(--color-titulo);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 13px;
   font-weight: 400;

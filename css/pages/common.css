@@ -1,16 +1,33 @@
+:root {
+  --color-dorado-principal: #eabe3f;
+  --color-background-negro:  #0A0E11;
+  --color-negro-secundario: #151515;
+}
 * {
   font-family: sans-serif;
 }
 
-:root {
-  --color-titulo: #eabe3f;
-
-}
 
 body {
     padding: 0;
     margin: 0;
 }
+
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track{
+  background-color: var(--color-negro-secundario);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-dorado-principal);
+  border-radius: 10px;
+  border: 2px solid var(--color-negro-secundario);
+}
+
 
 .migas-de-pan {
   text-align: right;
@@ -26,7 +43,7 @@ body {
 }
 
 .migas-de-pan a:hover {
-  color: var(--color-titulo);
+  color: var(--color-dorado-principal);
   transition: 0.5s;
 }
 
@@ -38,11 +55,11 @@ body {
     width: 100%;
     height: 15vh;
     background-size: cover;
-    background-color:#0A0E11;
+    background-color: var(--color-background-negro);
     background-position: center; 
     font-size: 1rem;
     font-family: sans-serif;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
 }
 
 header img {
@@ -54,33 +71,33 @@ header img {
 .container{
   display: grid;
   grid-template-columns: 330px auto;
-  border-top: 1px solid #151515;
+  border-top: 1px solid var(--color-negro-secundario);
   height: 140vh;
 }
 
 main {
-  background-color: #0a0e11;
-  color: white;
+  background-color:  var(--color-background-negro);
+  color: white; 
   overflow-y: auto;
 }
 
 .titulo-main {
-  color: var(--color-titulo);
+  color: var(--color-dorado-principal);
 }
 
 .barra-lateral{
   width: 289px;
-  border-right: 1px solid #151515;
-  height: 140vh;
+  border-right: 1px solid var(--color-negro-secundario);
+  height: 120vh;
   padding: 20px;
   margin: 0px;
-  background-color: #0a0e11;
+  background-color:  var(--color-background-negro);
   display: flex;
   flex-direction: column;
 }
 
 .botones-barra {
-  background-color:  #151515;
+  background-color:  var(--color-negro-secundario);
   padding: 5px 20px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -90,7 +107,7 @@ main {
 
 
 .botones-barra:hover {
-  background-color: var(--color-titulo);
+  background-color: var(--color-dorado-principal);
   transition: 0.5s;
   cursor: pointer;
   .link-botones {
@@ -101,24 +118,25 @@ main {
 
 .link-botones {
   text-decoration: none;
-  color: var(--color-titulo);
+  color: var(--color-dorado-principal);
   font-weight: 700;
 }
 
 
 
 #comentarios {
-  background-color: #151515;
+  background-color: var(--color-negro-secundario);
   padding: 10px 20px;
   height: 300px;
   width: 250px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
   border-radius: 10px;
 }
 
 #comentarios > h2 {
-  color: var(--color-titulo);
+  color: var(--color-dorado-principal);
   font-size: 17px;
   margin-top: 20px;
   text-align: center;
@@ -127,7 +145,7 @@ main {
 #comentarios > p {
   text-align: left;
   font-size: 14px;
-  color: var(--color-titulo);
+  color: var(--color-dorado-principal);
 }
 
 .contenedor-cliente {
@@ -138,14 +156,14 @@ main {
 #img-cliente {
   width: 140px;
   height: 140px;
-  margin-left: 20%;
+  margin-left: 55px;
   border-radius: 50%;
 }
 
-.pruebafooter {
+.contenedor-barra-main {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 120vh;
 }
 
 footer {
@@ -154,8 +172,8 @@ footer {
 
 
 table.table-footer {
-  border: 1px solid #151515;
-  background-color: #151515;
+  border: 1px solid var(--color-negro-secundario);
+  background-color: var(--color-negro-secundario);
   width: 100%;
 
 }
@@ -169,7 +187,7 @@ table.table-footer {
 
 
 .table-footer tr, .table-footer td > a {
-  color: var(--color-titulo);
+  color: var(--color-dorado-principal);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -180,8 +198,6 @@ table.table-footer {
   font-size: 12px;
   font-weight: 800;
 }
-
-
 
 footer p{
   text-align: center;

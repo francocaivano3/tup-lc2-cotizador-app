@@ -1,6 +1,29 @@
+:root {
+  --color-dorado-principal: #eabe3f;
+  --color-background-negro:  #0A0E11;
+  --color-negro-secundario: #151515;
+}
+
+#contacto, #contacto > a {
+  background-color: var(--color-dorado-principal);
+  color: var(--color-negro-secundario);
+}
+
+#contacto:hover, #contacto:hover > a {
+  background-color: var(--color-negro-secundario);
+  color: #eabe3f;
+  transition: 0.5s;
+}
+
+
+.container, .barra-lateral {
+  height: 110vh;
+}
+
+
 #titulo-main {
   text-align: center;
-  color: #eabe3f;
+  color: var(--color-dorado-principal);
 }
 
 #formulario-y-contacto {
@@ -16,20 +39,20 @@
 }
 
 #formulario-contacto {
-  border: 1px solid #eabe3f;
+  border: 1px solid var(--color-dorado-principal);
   border-radius: 20px 40px;
   display: inline-block;
   width: 350px;
   height: 400px;
   margin-left: 20px;
   padding-left: 24.5px;
-  background-color: #151515;
+  background-color: var(--color-negro-secundario);
 }
 
 #form {
   margin-left: 10px;
   height: 350px;
-  color: #eabe3f;
+  color: var(--color-dorado-principal);
 }
 
 #form > label {
@@ -58,13 +81,21 @@
   margin-left: 20px;
   cursor: pointer;
   background-color: #222222;
-  color: #eabe3f;
+  color: var(--color-dorado-principal);
 }
 
 #form > button[type="submit"]{
-  background-color: #eabe3f;
+  background-color: var(--color-dorado-principal);
   width: 52px;
   color: black;
+}
+
+::placeholder{
+  padding-left: 10px;
+}
+
+textarea::placeholder{
+  padding-top: 10px;
 }
 
 
@@ -90,8 +121,8 @@
 }
 
 #dolar-api:hover{
-  background-color: #151515;
-  color: #eabe3f;
+  background-color: var(--color-negro-secundario);
+  color: var(--color-dorado-principal);
   font-weight: 600;
 }
 
@@ -102,13 +133,13 @@
   margin-top: auto;
   padding-left: 10px;
   border-radius: 10px 20px;
-  background-color: #151515;
+  background-color: var(--color-negro-secundario);
 }
 
 
 
 .datos-contacto > h2 {
-  color: #eabe3f;
+  color: var(--color-dorado-principal);
 }
 
 #logo-utn {
@@ -118,8 +149,5 @@
   margin-bottom: auto;
 }
 
-@media screen and (max-width: 480px){
-  h2 {
-    color: red;
-  }
-}
+
+

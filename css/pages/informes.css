@@ -1,6 +1,28 @@
+:root {
+    --color-dorado-principal: #eabe3f;
+    --color-background-negro:  #0A0E11;
+    --color-negro-secundario: #151515;
+  }
+
 * {
     font-family: sans-serif;
 }
+
+
+#informes, #informes > a {
+    background-color: var(--color-dorado-principal);
+    color: var(--color-negro-secundario);
+}
+
+#informes:hover, #informes:hover > a {
+    background-color: var(--color-negro-secundario);
+    color: #eabe3f;
+    transition: 0.5s;
+}
+
+.container, .barra-lateral {
+    height: 130vh;
+  }
 
 #contenedor-select-grafico {
     display: flex;
@@ -10,7 +32,7 @@
 
 h2 {
     text-align: center;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
     font-size: 25px;
 }
 
@@ -20,7 +42,7 @@ h2 {
     margin-top: 10px;
     font-size: 15px;
     padding-bottom: 8px;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
 }
 
 
@@ -31,7 +53,7 @@ h2 {
     margin-left: 25px;
     border-radius: 10px;
     background-color: #1A1A1A;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
     padding-left: 25px;
     padding-right: 15px;
     max-width: 300px;
@@ -48,7 +70,7 @@ h2 {
     border-radius: 5px;
     display: inline-block;
     background-color: #cf9833;
-    border: 1px solid #151515;
+    border: 1px solid var(--color-negro-secundario);
     color: black;
 }
 
@@ -62,7 +84,7 @@ h2 {
 #filter {
     margin-left: 15px;
     font-size: 20px;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
 }
 
 
@@ -71,24 +93,24 @@ h2 {
     height: 300px;
     border-radius: 10px;
     margin-left: auto;
-    margin-right: 26px;
+    margin-right: 26px; 
 }
 
     
 #compartir-informacion {
     margin-left: 25px;
-    text-decoration: underline var(--color-titulo);
-    color: var(--color-titulo);
+    text-decoration: underline var(--color-dorado-principal);
+    color: var(--color-dorado-principal);
     font-weight: 600;
 }
 
 .fa-envelope {
     margin-left: 5px;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
 }
 
 #tabla-informes {
-    background-color: #151515;
+    background-color: var(--color-negro-secundario);
     border: none;
     border-radius: 10px;
     width: 95%;
@@ -99,10 +121,15 @@ h2 {
     overflow-y: auto;
 }
 
-#tabla-informes  th, #tabla-informes td {
-    color: var(--color-titulo);
+#tabla-informes th, #tabla-informes td {
+    color: var(--color-dorado-principal);
     text-align: center;
     width: 20%;
+    padding-bottom: 20px;
+}
+
+#tabla-informes th {
+    padding-top: 10px;
 }
 
 

@@ -1,39 +1,30 @@
+:root {
+    --color-dorado-principal: #eabe3f;
+    --color-background-negro:  #0A0E11;
+    --color-negro-secundario: #151515;
+  }
+
 body {
     padding: 0;
     margin: 0;
 }
 
-#header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 15vh;
-    background-size: cover;
-    background-color:#0A0E11;
-    background-position: center; /* Centrar la imagen dentro del contenedor /
-    background-repeat: no-repeat; / No repetir la imagen */
-    font-size: 1rem;
-    font-family: sans-serif;
-    color: var(--color-titulo);
+#inicio, #inicio > a {
+    background-color: var(--color-dorado-principal);
+    color: var(--color-negro-secundario);
 }
 
-header img {
-  height: 100%;
-  width: 100px;
+#inicio:hover, #inicio:hover > a {
+    background-color: var(--color-negro-secundario);
+    color: #eabe3f;
+    transition: 0.5s;
 }
 
 .container{
   display: grid;
   grid-template-columns: 330px auto;
   border: 1px solid #111111;
-  height: 100vh;
-}
-
-main {
-  background-color: #040514;
-  color: white;
-  overflow-y: auto;
+  height: 120vh;
 }
 
 #content {
@@ -50,7 +41,7 @@ main {
     background-color: #151515;
     padding-left: 15px;
     padding-right: 15px;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
 }
 
 .selector {
@@ -72,13 +63,17 @@ main {
 #pizarra {
     background-color: #151515;
     height: 45%;
-    border-radius: 20px;
+    border-radius: 20px 20px 0px 0px;
     margin: 0px 15px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 15px 10px;
     overflow-x: auto;
+}
+
+.selector {
+    background-color: #cf9833;
 }
 
 
@@ -99,7 +94,6 @@ input[type="checkbox"]:checked + .star{
         'GRAD' 0,
         'opsz' 24
       }
-      /* color: diseño  CAMBIAR LUEGO DE TENER LAS FUNCIONALIDADES LISTAS*/
       color: goldenrod;
       transition: 1s;
   }
@@ -108,26 +102,12 @@ input[type="checkbox"]:checked + .star{
     display: none;
 }
 
-/* .precio {
-    grid-template-columns: repeat(2, 48px);
-    grid-template-areas: 
-    "compra" "venta"
-    "precio1" "precio2"
-    ;
-}
-
-.item-1 {grid-area: compra;}
-.item-2 {grid-area: precio1}
-.item-3 {grid-area: venta;}
-.item-4 {grid-area: precio2;} */
-
-
 .moneda {
     display: inline-flex;
     align-items: center;
-    border: 1px solid var(--color-titulo);
+    border: 1px solid var(--color-dorado-principal);
     border-radius: 10px;
-    margin: 10px 10px;
+    margin: 30px 10px;
     padding: 0px 20px;
     width: 420px;
     justify-content: space-between;
@@ -137,7 +117,7 @@ article.moneda > p, article.moneda div {
     display: inline-flex;
     padding-top: 6px;
     margin-right: auto;
-    color: var(--color-titulo);
+    color: var(--color-dorado-principal);
 }
 
 
@@ -159,11 +139,6 @@ article.moneda > p, article.moneda div {
     display: flex;
     flex-direction: column;
 }
-
-.precio-compra > p {
-    /* display: block; */
-}
-
 
 .moneda :last-child {
     margin-top: 2px;
@@ -197,8 +172,8 @@ article.moneda > p, article.moneda div {
 
 
 table {
-    border: 1px solid var(--color-titulo);
-    background-color: var(--color-titulo);
+    border: 1px solid var(--color-dorado-principal);
+    background-color: var(--color-dorado-principal);
     width: 100%;
 
 }
@@ -210,7 +185,7 @@ td, th {
 }
 
 tr,td > a {
-    color: #0A0E11;
+    color: var(--back);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -223,7 +198,17 @@ tr > td > p {
 }
 
 
-
 footer p{
     text-align: center;
+}
+
+
+section::-webkit-scrollbar {
+    height: 12px;
+}
+
+section::-webkit-scrollbar-thumb{
+    background-color: var(--color-dorado-principal);
+    border-radius: 10px;
+    border: 2px solid var(--color-negro-secundario);
 }

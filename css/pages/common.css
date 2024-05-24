@@ -7,6 +7,11 @@
   font-family: sans-serif;
 }
 
+*::selection {
+  color: #151515;
+  background-color: #eabe3f;
+}
+
 
 body {
     padding: 0;
@@ -40,6 +45,9 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   font-family: sans-serif;
   font-weight: 600;
+  font-size: 14px;
+  opacity: 0.6;
+
 }
 
 .migas-de-pan a:hover {
@@ -179,7 +187,7 @@ table.table-footer {
 }
 
 .table-footer td, .table-footer th {
-  padding: 10px;
+  padding: 7px 10px;
   text-align: left;
   width: 25%;
 }

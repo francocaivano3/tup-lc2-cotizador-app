@@ -104,9 +104,9 @@ input[type="checkbox"]:checked + .star{
     align-items: center;
     border: 1px solid var(--color-dorado-principal);
     border-radius: 10px;
-    margin: 30px 10px;
+    margin: 20px auto;
     padding: 0px 20px;
-    width: 420px;
+    width: 350px;
     justify-content: space-between;
 }
 

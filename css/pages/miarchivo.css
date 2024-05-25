@@ -11,14 +11,13 @@
 
 #archivo:hover, #archivo:hover > a {
   background-color: var(--color-negro-secundario);
-  color: #eabe3f;
+  color: var(--color-dorado-principal);
   transition: 0.5s;
 }
 
 .container, .barra-lateral {
   height: 140vh;
   overflow-y: auto;
-  margin-bottom: 10px;
 }
 
 .container::-webkit-scrollbar, #table-container::-webkit-scrollbar{
@@ -53,9 +52,9 @@ h2 {
     cursor: pointer;
 }
 
-/* #table-container {
-    overflow-y: auto;
-} */
+#table-container {
+  margin-bottom: 80px;
+}
 
 table#table-main {
     border: 1px solid var(--color-negro-secundario);

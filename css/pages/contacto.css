@@ -11,7 +11,7 @@
 
 #contacto:hover, #contacto:hover > a {
   background-color: var(--color-negro-secundario);
-  color: #eabe3f;
+  color: var(--color-dorado-principal);
   transition: 0.5s;
 }
 
@@ -42,7 +42,7 @@
   border: 1px solid var(--color-dorado-principal);
   border-radius: 20px 40px;
   display: inline-block;
-  width: 350px;
+  width: 35%;
   height: 400px;
   margin-left: 20px;
   padding-left: 24.5px;
@@ -57,11 +57,11 @@
 
 #form > label {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1rem;
 }
 
 #form > input, #form > textarea {
-  width: 300px;
+  width: 87%;
   height: 30px;
   border: none;
   border-radius: 5px;
@@ -106,13 +106,13 @@ textarea::placeholder{
   margin-left: 20px;
   margin-right: 10px;
   box-sizing: border-box;
-  width: 450px;
+  width: 45%;
   
 }
 
 #dolar-api, #dolar-api:visited {
   background-color: #3730a3;
-  padding: 5px 10px;
+  padding: 5px;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -143,8 +143,8 @@ textarea::placeholder{
 }
 
 #logo-utn {
-  width: 180px;
-  height: 70px;
+  width: 12.15vw;
+  height: 8.15vw;
   margin-top: auto;
   margin-bottom: auto;
 }

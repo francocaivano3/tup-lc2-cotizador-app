@@ -8,14 +8,15 @@
 }
 
 *::selection {
-  color: #151515;
-  background-color: #eabe3f;
+  color: var(--color-negro-secundario);
+  background-color: var(--color-dorado-principal);
 }
 
 
 body {
     padding: 0;
-    margin: 0;
+    margin: 0;  
+    background-color: var(--color-background-negro);
 }
 
 
@@ -75,16 +76,16 @@ header img {
   width: 100px;
 }
 
-
 .container{
   display: grid;
-  grid-template-columns: 330px auto;
+  grid-template-columns: fit-content(30%) auto;
   border-top: 1px solid var(--color-negro-secundario);
   height: 140vh;
 }
 
+
 main {
-  background-color:  var(--color-background-negro);
+  background-color: var(--color-background-negro);
   color: white; 
   overflow-y: auto;
 }
@@ -94,7 +95,7 @@ main {
 }
 
 .barra-lateral{
-  width: 289px;
+  width: clamp(100px, 23vw, 289px);
   border-right: 1px solid var(--color-negro-secundario);
   height: 120vh;
   padding: 20px;
@@ -112,8 +113,6 @@ main {
   border: none;
 }
 
-
-
 .botones-barra:hover {
   background-color: var(--color-dorado-principal);
   transition: 0.5s;
@@ -130,13 +129,11 @@ main {
   font-weight: 700;
 }
 
-
-
 #comentarios {
   background-color: var(--color-negro-secundario);
   padding: 10px 20px;
   height: 300px;
-  width: 250px;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
@@ -162,9 +159,9 @@ main {
 }
 
 #img-cliente {
-  width: 140px;
-  height: 140px;
-  margin-left: 55px;
+  width: 10.23vw;
+  height: 10.23vw;
+  margin-left: 19.7%;
   border-radius: 50%;
 }
 
@@ -196,13 +193,11 @@ table.table-footer {
 
 .table-footer tr, .table-footer td > a {
   color: var(--color-dorado-principal);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 13px;
   font-weight: 400;
 }
 
 .table-footer tr > td > p {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 12px;
   font-weight: 800;
 }
@@ -210,3 +205,23 @@ table.table-footer {
 footer p{
   text-align: center;
 }
+
+
+
+/*Diseño responsive - mobile*/
+
+
+/* @media screen and (max-width: 500px){
+
+    .contenedor-barra-main {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      
+    }
+} */

@@ -9,6 +9,10 @@ body {
     margin: 0;
 }
 
+.container, .barra-lateral {
+    height: 110vh;
+  }
+
 #inicio, #inicio > a {
     background-color: var(--color-dorado-principal);
     color: var(--color-negro-secundario);
@@ -18,13 +22,6 @@ body {
     background-color: var(--color-negro-secundario);
     color: #eabe3f;
     transition: 0.5s;
-}
-
-.container{
-  display: grid;
-  grid-template-columns: 330px auto;
-  border: 1px solid #111111;
-  height: 120vh;
 }
 
 #content {
@@ -66,7 +63,7 @@ body {
     border-radius: 20px 20px 0px 0px;
     margin: 0px 15px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 15px 10px;
     overflow-x: auto;
@@ -212,3 +209,4 @@ section::-webkit-scrollbar-thumb{
     border-radius: 10px;
     border: 2px solid var(--color-negro-secundario);
 }
+

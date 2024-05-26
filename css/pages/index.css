@@ -20,7 +20,7 @@ body {
 
 #inicio:hover, #inicio:hover > a {
     background-color: var(--color-negro-secundario);
-    color: #eabe3f;
+    color: var(--color-dorado-principal);
     transition: 0.5s;
 }
 
@@ -210,3 +210,45 @@ section::-webkit-scrollbar-thumb{
     border: 2px solid var(--color-negro-secundario);
 }
 
+
+
+@media screen and (min-width: 300px) and (max-width: 480px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex: 1;
+        box-sizing: border-box;
+        width: 100%;
+      }
+    
+      .container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      #pizarra {
+        display: flex;
+        flex-direction: row;
+        max-height: 50vh;
+        overflow-y: auto;
+      }
+}
+
+
+
+
+@media screen and (min-width: 1573px) and (max-width: 1920px){
+  #pizarra{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 4%;
+    gap: 10px 10px;
+  }
+  .moneda {
+    margin: 15px 2.5%;
+  }
+}

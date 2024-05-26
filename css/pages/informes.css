@@ -141,3 +141,56 @@ h2 {
 .fa-arrow-up {
     color: green;
 }
+
+
+
+@media screen and (min-width: 300px) and (max-width: 480px) {
+    /*probar margin 20px para que no se coma las letras en el body*/
+    
+    main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex: 1;
+        box-sizing: border-box;
+        width: 100%;
+      }
+    
+      .container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+    #contenedor-select-grafico {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #item-select {
+        margin-bottom: 1em;
+    }
+
+    .imagen-grafico {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2em;
+        width: 90vw;
+        height: 50vw;
+        }
+
+    #compartir-informacion {
+        margin-top: 4em;
+        text-align: center;
+    }
+
+    .fa-envelope {
+        text-align: center;
+    }
+    #tabla-informes {
+        width: 90vw;
+        margin-top: 0;
+    }
+}

@@ -6,7 +6,7 @@
 
 body {
     padding: 0;
-    margin: 0;
+    margin: 0; 
 }
 
 .container, .barra-lateral {
@@ -213,6 +213,8 @@ section::-webkit-scrollbar-thumb{
 
 
 @media screen and (min-width: 300px) and (max-width: 480px) {
+    /*probar margin 20px para que no se coma las letras en el body*/
+    
     main {
         display: flex;
         flex-direction: column;
@@ -230,11 +232,37 @@ section::-webkit-scrollbar-thumb{
         box-sizing: border-box;
       }
 
+      #item-select {
+        width: 90vw;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #item-select > h3 {
+        font-size: 0.9rem;
+      }
+
       #pizarra {
         display: flex;
         flex-direction: row;
         max-height: 50vh;
         overflow-y: auto;
+      }
+
+      #advertencia {
+        font-size: 0.9rem;
+        padding: 20px;
+      }
+
+      .clase-dolar-api {
+        display: inline;
+        font-size: 0.6rem;
+        text-decoration: none;
+        color: white;
+      }
+
+      footer {
+        margin-top: 40px;
       }
 }
 
@@ -250,5 +278,11 @@ section::-webkit-scrollbar-thumb{
   }
   .moneda {
     margin: 15px 2.5%;
+  }
+
+  .clase-dolar-api{
+    display: inline;
+    text-decoration: none;
+    color: white;
   }
 }

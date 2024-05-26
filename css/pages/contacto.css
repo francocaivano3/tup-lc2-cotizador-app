@@ -151,3 +151,50 @@ textarea::placeholder{
 
 
 
+@media screen and (min-width: 300px) and (max-width: 480px) {
+  /*probar margin 20px para que no se coma las letras en el body*/
+  
+  main {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      flex: 1;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  
+    .container {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+ 
+    #formulario-y-contacto {
+      flex-direction: column;
+      width: 100%;
+      flex: 1;
+      box-sizing: border-box;
+    }
+
+    #formulario-contacto, #contenedor-informacion {
+      width: 90vw;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+    }
+
+    #logo-utn {
+      width: 70%;
+      height: 70%;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 40px;
+    }
+
+   
+}

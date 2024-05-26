@@ -237,12 +237,13 @@ footer p{
       box-sizing: border-box;
       width: 100%;
       text-align: center;
+      overflow-x: hidden;
     }  
 
-    /* body .barra-lateral {
-      display: flex;
-      width: 100%;
-    } */
+    .migas-de-pan {
+      margin-right: 5%;
+      margin-bottom: 20px;
+    }
 
     .barra-lateral, body #header {
       width: 100%;
@@ -262,7 +263,13 @@ footer p{
     
     .barra-lateral {
       box-sizing: border-box;
-      max-height: 80vh;
+      max-height: 70vh;
+    }
+
+    .botones-barra {
+      width: 90vw;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     #comentarios {
@@ -280,6 +287,8 @@ footer p{
     }
 
     footer {
+      width: 100%;
+      font-size: 1rem;
     }
   }
 
@@ -288,7 +297,14 @@ footer p{
 
   @media screen and (min-width: 1573px) and (max-width: 1920px){
     #comentarios{
-      margin-left: 0;
+      margin-left: auto;
       margin-right: auto;
+    }
+    
+    #img-cliente{
+      width: 85.5%;
+      height: 10vw;
+      margin-left: 10.37%;
+     
     }
   }

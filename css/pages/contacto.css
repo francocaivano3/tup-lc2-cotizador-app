@@ -15,11 +15,9 @@
   transition: 0.5s;
 }
 
-
 .container, .barra-lateral {
   height: 110vh;
 }
-
 
 #titulo-main {
   text-align: center;
@@ -98,8 +96,6 @@ textarea::placeholder{
   padding-top: 10px;
 }
 
-
-
 #contenedor-informacion {
   display: flex;
   flex-direction: column;
@@ -107,7 +103,6 @@ textarea::placeholder{
   margin-right: 10px;
   box-sizing: border-box;
   width: 45%;
-  
 }
 
 #dolar-api, #dolar-api:visited {
@@ -126,17 +121,14 @@ textarea::placeholder{
   font-weight: 600;
 }
 
-
 #datos-contacto-utn {
   display: flex;
-  flex: column;
+  flex-direction: row;
   margin-top: auto;
   padding-left: 10px;
   border-radius: 10px 20px;
   background-color: var(--color-negro-secundario);
 }
-
-
 
 .datos-contacto > h2 {
   color: var(--color-dorado-principal);
@@ -149,10 +141,7 @@ textarea::placeholder{
   margin-bottom: auto;
 }
 
-
-
 @media screen and (min-width: 300px) and (max-width: 480px) {
-  /*probar margin 20px para que no se coma las letras en el body*/
   
   main {
       display: flex;
@@ -197,4 +186,17 @@ textarea::placeholder{
     }
 
    
+}
+
+@media screen and (min-width: 1573px) and (max-width: 1920px){
+
+ #datos-contacto-utn{
+  width: 91%;
+ }
+
+  #logo-utn{
+    margin-left: 30px;
+    width: 11vw;
+    height: 8.5vw;
+  }
 }

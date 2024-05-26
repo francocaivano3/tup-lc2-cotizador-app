@@ -118,16 +118,20 @@ main {
   flex-direction: column;
 }
 
-.botones-barra {
+.barra-lateral .botones-barra {
   background-color:  var(--color-negro-secundario);
+  color: var(--color-dorado-principal);
   padding: 5px 20px;
+  width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
   border: none;
+  font-weight: 700;
 }
 
-.botones-barra:hover {
+.barra-lateral .botones-barra:hover {
   background-color:var(--color-dorado-principal);
+  color: var(--color-background-negro);
   transition: 0.5s;
   cursor: pointer;
   .link-botones {
@@ -139,7 +143,6 @@ main {
 .link-botones {
   text-decoration: none;
   color: var(--color-dorado-principal);
-  font-weight: 700;
 }
 
 #comentarios {
@@ -221,7 +224,7 @@ footer p{
 
 
 
-/*Diseño responsive - tablet*/
+/*Diseño mobile y desktop mas grande, falta hacer el de tablet*/
 
 @media screen and (min-width: 300px) and (max-width: 480px) {
     body {
@@ -240,6 +243,11 @@ footer p{
       overflow-x: hidden;
     }  
 
+    #header img {
+      width: 95px;
+      height: 90%;
+    }
+
     .migas-de-pan {
       margin-right: 5%;
       margin-bottom: 20px;
@@ -248,25 +256,13 @@ footer p{
     .barra-lateral, body #header {
       width: 100%;
     }
-
-    /* main {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-  
-    .container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    } */
     
     .barra-lateral {
       box-sizing: border-box;
       max-height: 70vh;
     }
 
-    .botones-barra {
+    .link-botones, .botones-barra {
       width: 90vw;
       margin-left: auto;
       margin-right: auto;
@@ -307,4 +303,9 @@ footer p{
       margin-left: 10.37%;
      
     }
+
+    header img {
+      height: 90%;
+      width: 135px;
+}
   }

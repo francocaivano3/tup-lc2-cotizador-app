@@ -4,11 +4,6 @@
     --color-negro-secundario: #151515;
   }
 
-body {
-    padding: 0;
-    margin: 0; 
-}
-
 .container, .barra-lateral {
     height: 110vh;
   }
@@ -47,6 +42,7 @@ body {
     margin-left: 20px;
     margin-top: 10px;
     border-radius: 5px;
+    background-color: var(--color-dorado-principal);
 }
 
 
@@ -58,7 +54,7 @@ body {
 }
 
 #pizarra {
-    background-color: #151515;
+    background-color: var(--color-negro-secundario);
     height: 45%;
     border-radius: 20px 20px 0px 0px;
     margin: 0px 15px;
@@ -68,11 +64,6 @@ body {
     gap: 15px 10px;
     overflow-x: auto;
 }
-
-.selector {
-    background-color: #cf9833;
-}
-
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -117,7 +108,6 @@ article.moneda > p, article.moneda div {
     color: var(--color-dorado-principal);
 }
 
-
 .precio {
  
     width: 170px;
@@ -159,14 +149,14 @@ article.moneda > p, article.moneda div {
     display: inline-block;
     background-color: #060821;
     padding: 3px;
+    text-decoration: none;
+    color: white;
 }
 
 #dolar-api {
     background-color: #3730a3;
     padding-left: 3px;
 }
-
-
 
 table {
     border: 1px solid var(--color-dorado-principal);
@@ -194,11 +184,9 @@ tr > td > p {
     font-weight: 800;
 }
 
-
 footer p{
     text-align: center;
 }
-
 
 section::-webkit-scrollbar {
     height: 12px;
@@ -209,8 +197,6 @@ section::-webkit-scrollbar-thumb{
     border-radius: 10px;
     border: 2px solid var(--color-negro-secundario);
 }
-
-
 
 @media screen and (min-width: 300px) and (max-width: 480px) {
     /*probar margin 20px para que no se coma las letras en el body*/
@@ -265,9 +251,6 @@ section::-webkit-scrollbar-thumb{
         margin-top: 40px;
       }
 }
-
-
-
 
 @media screen and (min-width: 1573px) and (max-width: 1920px){
   #pizarra{

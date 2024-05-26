@@ -75,7 +75,6 @@ table#table-main {
     width: 25%;
   }
   
-  
   #table-main tr  {
     color: var(--color-dorado-principal);
     font-family: sans-serif;
@@ -104,10 +103,8 @@ table#table-main {
     color: var(--color-dorado-principal);
   }
 
-  
   @media screen and (min-width: 300px) and (max-width: 480px) {
-    /*probar margin 20px para que no se coma las letras en el body*/
-    
+
     main {
         display: flex;
         flex-direction: column;

@@ -78,6 +78,7 @@ body::-webkit-scrollbar-thumb {
     height: 15vh;
     background-size: cover;
     background-color: var(--color-background-negro);
+    /* background-image: url(..); PROBAR CON ALGUNA IMAGEN DE FONDO*/ 
     background-position: center; 
     font-size: 1rem;
     font-family: sans-serif;

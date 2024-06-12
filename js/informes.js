@@ -66,10 +66,10 @@ selectMoneda.addEventListener("change", function(){
 
 
 
-// function mostrarData(data){
-//   for(let i = 1; i < 5; i++){
-//     let hijo = document.querySelector(`#tabla-informes tbody tr:nth-child(${i})`);
-//     hijo.innerHTML = data.nombre;
-
-//   }
-// }
+function mostrarData(data){
+  for(let i = 1; i < 5; i++){
+    let hijo = document.querySelector(`#tabla-informes tbody tr:nth-child(${i})`);
+    hijo.innerHTML = data.nombre;
+    
+  }
+}                                

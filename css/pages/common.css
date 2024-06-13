@@ -400,3 +400,7 @@ footer p {
     width: 135px;
   }
 }
+
+.menu{
+  transform: translate(-100%, 0);
+}

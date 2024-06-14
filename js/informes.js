@@ -1,10 +1,11 @@
 
+
 let ruta;
 let selectMoneda = document.getElementById("selectMoneda");
-let tablaInformes = document.getElementById("tabla-informes");
+// let tablaInformes = document.getElementById("tabla-informes");
 
 
-let links = ["https://dolarapi.com/v1/dolares/oficial", "https://dolarapi.com/v1/dolares/blue",
+const links = ["https://dolarapi.com/v1/dolares/oficial", "https://dolarapi.com/v1/dolares/blue",
     "https://dolarapi.com/v1/dolares/bolsa", "https://dolarapi.com/v1/dolares/contadoconliqui",
     "https://dolarapi.com/v1/dolares/tarjeta", "https://dolarapi.com/v1/dolares/mayorista",
     "https://dolarapi.com/v1/dolares/cripto", "https://dolarapi.com/v1/cotizaciones/eur",
@@ -13,13 +14,11 @@ let links = ["https://dolarapi.com/v1/dolares/oficial", "https://dolarapi.com/v1
 ];
 
 
-
 selectMoneda.addEventListener("change", function(){
-
+  console.log(selectMoneda.value);
   switch(selectMoneda.value){
     case "0": 
     ruta = links[0];
-    console.log("hola")
     break;
     case "1": 
     ruta = links[1];
@@ -67,9 +66,26 @@ selectMoneda.addEventListener("change", function(){
 
 
 function mostrarData(data){
-  for(let i = 1; i < 5; i++){
-    let hijo = document.querySelector(`#tabla-informes tbody tr:nth-child(${i})`);
-    hijo.innerHTML = data.nombre;
+  console.log(data)
+
+    //ver lo del ls para los 5 dias previos
+    let hijo = document.querySelector("tbody");
+    // let arrow = data.venta ?   ternario para la flecha en alta o baja
+    const opciones = { 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric'
+    };
     
-  }
-}                                
+    let fechaFormateada = new Date(data.fechaActualizacion).toLocaleString('es-ES', opciones)
+    hijo.innerHTML = `
+              <tr>
+              <td>${data.nombre}</td>
+              <td>${fechaFormateada}</td>
+              <td>$${data.compra}</td>
+              <td>$${data.venta}</td>
+              <td><i class="fa-solid fa-arrow-down"></i></td> 
+            </tr>
+    `;
+}
+          

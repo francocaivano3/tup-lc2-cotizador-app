@@ -97,7 +97,7 @@ function actualizarPizarra(data) {
               <p>$${data[i].venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox6" class="input-star-checkbox"><label for="star-checkbox6" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${data[i].nombre}" class="input-star-checkbox"><label for="star-checkbox-${data[i].nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
       `;
     }
   } else {
@@ -117,7 +117,7 @@ function actualizarPizarra(data) {
               <p>$${data.venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox6" class="input-star-checkbox"><label for="star-checkbox6" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
   }
 }
@@ -165,7 +165,7 @@ function pizarraInicio(data) {
               <p>$${data.venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox6" class="input-star-checkbox"><label for="star-checkbox6" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
 }
 

@@ -43,6 +43,7 @@
     margin-top: 10px;
     border-radius: 5px;
     background-color: var(--color-dorado-principal);
+    cursor: pointer;
 }
 
 
@@ -75,6 +76,7 @@
 
 .star {
   transition: 0.5s;
+  cursor: pointer;
 }
 
 input[type="checkbox"]:checked + .star{
@@ -238,6 +240,7 @@ section::-webkit-scrollbar-thumb{
         width: 90vw;
         margin-left: auto;
         margin-right: auto;
+        cursor: pointer;
       }
 
       #item-select > h3 {

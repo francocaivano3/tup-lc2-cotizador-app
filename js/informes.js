@@ -4,7 +4,6 @@ let ruta;
 let selectMoneda = document.getElementById("selectMoneda");
 // let tablaInformes = document.getElementById("tabla-informes");
 
-
 const links = ["https://dolarapi.com/v1/dolares/oficial", "https://dolarapi.com/v1/dolares/blue",
     "https://dolarapi.com/v1/dolares/bolsa", "https://dolarapi.com/v1/dolares/contadoconliqui",
     "https://dolarapi.com/v1/dolares/tarjeta", "https://dolarapi.com/v1/dolares/mayorista",

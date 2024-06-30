@@ -2,7 +2,23 @@ let selector = document.querySelector(".selector");
 let pizarra = document.getElementById("pizarra");
 let horaActualizacion = document.getElementById("parrafo");
 
-
+async function obtenerCotizaciones() {
+  for (i = 1; i < links.length; i++) {
+    try {
+      respuesta = await fetch(links[i]);
+      if (respuesta.ok) {
+        const data = await respuesta.json();
+        pizarraInicio(data);
+      } else {
+        alert("error");
+      }
+    } catch {
+      alert("errorsito");
+    }
+  }
+}
+localStorage.setItem("theme", "dark")
+console.log(localStorage.getItem("theme"))
 const links = [
   "https://dolarapi.com/v1/dolares",
   "https://dolarapi.com/v1/dolares/oficial",
@@ -17,17 +33,13 @@ const links = [
   "https://dolarapi.com/v1/cotizaciones/clp",
   "https://dolarapi.com/v1/cotizaciones/uyu",
 ];
-
 document.addEventListener("DOMContentLoaded", function () {
-  for (i = 1; i < links.length; i++){
-    
-    fetch(links[i])
-    .then((response) => response.json())
-    .then((data) => pizarraInicio(data))
-  }
-  
-})
+  obtenerCotizaciones();
+});
 
+// fetch(links[i])
+//     .then((response) => response.json())
+//     .then((data) => pizarraInicio(data))
 
 selector.addEventListener("change", function () {
   switch (selector.value) {
@@ -71,19 +83,22 @@ selector.addEventListener("change", function () {
       ruta = links[0];
       break;
   }
-
-  fetch(ruta)
-    .then((response) => response.json())
-    .then((data) => actualizarPizarra(data));
+  actualizarPizarra(ruta);
+  // fetch(ruta)
+  //   .then((response) => response.json())
+  //   .then((data) => actualizarPizarra(data));
 });
 
-function actualizarPizarra(data) {
-  if (Array.isArray(data)) {
-    pizarra.innerHTML = "";
-
-    for (i = 0; i < data.length; i++) {
-      horaActualizada(data[i])
-      pizarra.innerHTML += `
+async function actualizarPizarra(ruta) {
+  try {
+    respuesta = await fetch(ruta);
+    if (respuesta.ok) {
+      const data = await respuesta.json();
+      if (Array.isArray(data)) {
+        pizarra.innerHTML = "";
+        for (i = 0; i < data.length; i++) {
+          horaActualizada(data[i]);
+          pizarra.innerHTML += `
       <article class="moneda">
       <p class="title-article-moneda">${data[i].nombre.toUpperCase()}</p>
       <img src="./img/united-states.png" class = "bandera">
@@ -97,13 +112,17 @@ function actualizarPizarra(data) {
               <p>$${data[i].venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${data[i].nombre}" class="input-star-checkbox"><label for="star-checkbox-${data[i].nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${
+            data[i].nombre
+          }" class="input-star-checkbox"><label for="star-checkbox-${
+            data[i].nombre
+          }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
       `;
-    }
-  } else {
-    pizarra.style.maxHeight = "45vh";
-    horaActualizada(data)
-    pizarra.innerHTML = `
+        }
+      } else {
+        pizarra.style.maxHeight = "45vh";
+        horaActualizada(data);
+        pizarra.innerHTML = `
   <article class="moneda">
  <p class="title-article-moneda">${data.nombre.toUpperCase()}</p>
   <img src="${devolverBandera(data)}" class = "bandera">
@@ -117,40 +136,50 @@ function actualizarPizarra(data) {
               <p>$${data.venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${
+            data.nombre
+          }" class="input-star-checkbox"><label for="star-checkbox-${
+          data.nombre
+        }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
+      }
+    } else {
+      alert("error");
+    }
+  } catch {
+    alert("error");
   }
 }
 
-function devolverBandera(data){
+function devolverBandera(data) {
   let bandera;
-  
-    switch(data.moneda){
-      case "USD":
+
+  switch (data.moneda) {
+    case "USD":
       bandera = "./img/united-states.png";
       break;
-      case "EUR":
+    case "EUR":
       bandera = "./img/european-union.png";
       break;
-      case "BRL":
+    case "BRL":
       bandera = "./img/brasil.png";
       break;
-      case "CLP":
+    case "CLP":
       bandera = "./img/chile.png";
       break;
-      case "UYU":
+    case "UYU":
       bandera = "./img/uruguay.png";
       break;
-      default:
-      console.log("error")
+    default:
+      console.log("error");
       break;
   }
 
-  return bandera
+  return bandera;
 }
 
 function pizarraInicio(data) {
-  horaActualizada(data)
+  horaActualizada(data);
   pizarra.innerHTML += `
   <article class="moneda">
  <p class="title-article-moneda">${data.nombre.toUpperCase()}</p>
@@ -165,18 +194,24 @@ function pizarraInicio(data) {
               <p>$${data.venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${
+            data.nombre
+          }" class="input-star-checkbox"><label for="star-checkbox-${
+    data.nombre
+  }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
 }
 
-function horaActualizada(data){
-  
-  const opciones = { 
-    hour: '2-digit',
-    minute: '2-digit'
+function horaActualizada(data) {
+  const opciones = {
+    hour: "2-digit",
+    minute: "2-digit",
   };
 
-  let hora = new Date(data.fechaActualizacion).toLocaleString("es-ES", opciones);
-  
-  horaActualizacion.innerHTML = `Datos actualizados a las ${hora} hs`
+  let hora = new Date(data.fechaActualizacion).toLocaleString(
+    "es-ES",
+    opciones
+  );
+
+  horaActualizacion.innerHTML = `Datos actualizados a las ${hora} hs`;
 }

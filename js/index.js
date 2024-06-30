@@ -14,7 +14,7 @@ async function obtenerCotizaciones() {
       }
     } catch {
       alert("errorsito");
-    }
+    } 
   }
 }
 localStorage.setItem("theme", "dark")

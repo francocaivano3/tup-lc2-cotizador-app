@@ -1,6 +1,7 @@
 /*Gráfica con varias líneas*/
 //Axis X
 const select = document.getElementById("selectMoneda");
+const tabla = document.getElementById("tbody");
 
 const rutas = [
   "https://dolarapi.com/v1/dolares",
@@ -84,15 +85,10 @@ try {
   console.error("Error al cargar los datos: ", error);
 }
 
-  
-  
 }
-
 
   cargarDatos(casasApi)
   console.log(arrayDatosVentas);
-
-
 
 const ctx = document.getElementById("miGrafica").getContext("2d");
 
@@ -110,6 +106,41 @@ const myChart = new Chart(ctx, {
         backgroundColor: "rgba(54, 162, 235, 0.2)",
         borderWidth: 1,
         fill: true,
+      },
+      {
+        //Ejemplo de gráfica con relleno
+        label: "Dolar Blue",
+        data: arrayDatosVentas["blue"],
+        borderColor: "rgba(255, 99, 132, 1)",    
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderWidth: 1,
+        fill: true,
+      },
+      {
+        //Ejemplo de gráfica con relleno
+        label: "Dolar Bolsa",
+        data: arrayDatosVentas["bolsa"],
+        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderWidth: 1,
+        fill: true,
+      },{
+        //Ejemplo de gráfica con relleno
+        label: "Dolar Cripto",
+        data: arrayDatosVentas["cripto"],
+        borderColor: "rgba(255, 206, 86, 1)",    
+        backgroundColor: "rgba(255, 206, 86, 0.2)",
+        borderWidth: 1,
+        fill: true,
+      },
+      {
+        //Ejemplo de gráfica con relleno
+        label: "Dolar Mayorista",
+        data: arrayDatosVentas["mayorista"],
+        borderColor: "rgba(153, 102, 255, 1)",   
+        backgroundColor: "rgba(153, 102, 255, 0.2)",
+        borderWidth: 1,
+        fill: true,
       }
     ],
   },
@@ -119,5 +150,52 @@ ctx.innerHTML = myChart;
 
 });
 
+function tablaDatosAnteriores(){
+  let moneda = parseInt(select.value);
+  let posicion;
+
+  switch (moneda){
+    case "0":
+      posicion = "oficial";
+      break;
+    case "1":
+      posicion = "blue";
+      break;
+    case "2":
+      posicion = "bolsa";
+      break;
+    case "5":
+      posicion = "cripto";
+      break;
+    case "6":
+      posicion = "mayorista";
+      break;
+  }
+
+  let arrayDatosMoneda = arrayDatosVentas[posicion]
+  console.log("AAAAAAAAAA");
+  console.log(arrayDatosVentas)
+  let datosTabla = "";
+
+  for (let i = 0; i < Object.keys(arrayDatosMoneda).length; i++){
+    datosTabla += `
+              <tr>
+              <td>Dólar ${posicion.toUpperCase}</td>
+              <td>${fechas[i]}</td>
+              <td>$${arrayDatosVentas[i]}</td>
+              <td>$1015</td>
+              <td><i class="fa-solid fa-arrow-down"></i></td>
+            </tr>
+    `;
+  }
+  console.log(datosTabla)
+  return datosTabla;
+}
+
+select.addEventListener("change", function(){
+  if(select.value == "0" || select.value == "1" || select.value == "2" || select.value == "5" || select.value == "6"){
+    tbody.innerHTML += tablaDatosAnteriores();
+  } 
+})
 
 

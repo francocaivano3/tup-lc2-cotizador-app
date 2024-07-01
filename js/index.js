@@ -236,8 +236,13 @@ async function actualizarPizarra(ruta) {
         pizarra.style.maxHeight = "45vh";
         horaActualizada();
         pizarra.innerHTML = `
+<<<<<<< HEAD
   <article class="moneda" id="moneda-${data.nombre}">
  <p class="title-article-moneda"> ${data.nombre.toUpperCase()} </p>
+=======
+<article class="moneda" id="moneda-${data.nombre}">
+ <p class="title-article-moneda">${data.nombre.toUpperCase()}</p>
+>>>>>>> 13cccaf796e06033e3e8d478059ca54191c8e112
   <img src="${devolverBandera(data)}" class="bandera">
             <div class="precio">
               <div class="precio-compra">

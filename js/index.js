@@ -3,7 +3,6 @@ const pizarra = document.getElementById("pizarra");
 const horaActualizacion = document.getElementById("parrafo");
 const ls = localStorage;
 let monedas = [];
-let dato;
 const links = [
   "https://dolarapi.com/v1/dolares",
   "https://dolarapi.com/v1/dolares/oficial",
@@ -19,6 +18,74 @@ const links = [
   "https://dolarapi.com/v1/cotizaciones/uyu",
 ];
 
+ function msgError() {
+   Swal.fire({
+     title: "Error!",
+     text: "Error al cargar la API",
+     icon: "error",
+     iconColor: "#ec3545",
+     confirmButtonText: "Aceptar",
+     confirmButtonColor: "#27a545",
+     background: "#111111",
+     color: "white",
+   });
+ }
+
+async function agregarFavoritos(checkbox) {
+  let datos;
+  switch (checkbox.id) {
+    case "star-checkbox-Oficial":
+      datos = await api(1);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Blue":
+      datos = await api(2);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Bolsa":
+      datos = await api(3);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Contado con liquidación":
+      datos = await api(4);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Tarjeta":
+      datos = await api(5);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Mayorista":
+      datos = await api(6);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Cripto":
+      datos = await api(7);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Euro":
+      datos = await api(8);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Real Brasileño":
+      datos = await api(9);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Peso Chileno":
+      datos = await api(10);
+      monedas.push(datos);
+      break;
+    case "star-checkbox-Peso Uruguayo":
+      datos = await api(11);
+      monedas.push(datos);
+      break;
+  }
+  let monedasJSON = JSON.stringify(monedas);
+  ls.setItem("favoritos", monedasJSON);
+  let datosLS = ls.getItem("favoritos");
+  let datosUsables = JSON.parse(datosLS);
+  console.log(datosUsables);
+}
+
 async function api(n) {
   try {
     respuesta = await fetch(links[n]);
@@ -29,19 +96,6 @@ async function api(n) {
   } catch {
     msgError();
   }
-}
-
-function msgError() {
-  Swal.fire({
-    title: "Error!",
-    text: "Error al cargar la API",
-    icon: "error",
-    iconColor: "#ec3545",
-    confirmButtonText: "Aceptar",
-    confirmButtonColor: "#27a545",
-    background: "#111111",
-    color: "white",
-  });
 }
 
 async function obtenerCotizaciones() {
@@ -62,6 +116,7 @@ async function obtenerCotizaciones() {
 
 document.addEventListener("DOMContentLoaded", function () {
   obtenerCotizaciones();
+  
   setInterval(() => {
     pizarra.innerHTML = "";
     obtenerCotizaciones();
@@ -90,68 +145,13 @@ function pizarraInicio(data) {
     data.nombre
   }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
-  let datos;
+
   const checkboxes = document.getElementsByClassName("input-star-checkbox");
   Array.from(checkboxes).forEach((checkbox) => {
     checkbox.addEventListener("change", async function () {
       if (checkbox.checked) {
-        switch (checkbox.id) {
-          case "star-checkbox-Oficial":
-            datos = await api(1);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Blue":
-            datos = await api(2);
-            monedas.push(JSON.stringify(datos));
-            console.log(monedas);
-            console.log(JSON.parse(monedas[0]));
-            break;
-          case "star-checkbox-Bolsa":
-            datos = await api(3);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Contado con liquidación":
-            datos = await api(4);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Tarjeta":
-            datos = await api(5);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Mayorista":
-            datos = await api(6);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Cripto":
-            datos = await api(7);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Euro":
-            datos = await api(8);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Real Brasileño":
-            datos = await api(9);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Peso Chileno":
-            datos = await api(10);
-            monedas.push(JSON.stringify(datos));
-            break;
-          case "star-checkbox-Peso Uruguayo":
-            datos = await api(11);
-            monedas.push(JSON.stringify(datos));
-            break;
-        }
-        ls.setItem("favoritos", monedas);
-        // console.log(ls.getItem("favoritos"));
-        let fav = ls.getItem("favoritos");
-        fav.split(" ")
-        console.log(fav)
-        console.log(JSON.parse(fav))
+        agregarFavoritos();
       } else {
-        // copiaArray = JSON.parse(ls.getItem("favoritos"));
-
       }
     });
   });
@@ -202,7 +202,7 @@ selector.addEventListener("change", function () {
   actualizarPizarra(ruta);
 });
 
-async function actualizarPizarra(ruta) {  
+async function actualizarPizarra(ruta) {
   try {
     respuesta = await fetch(ruta);
     if (respuesta.ok) {
@@ -212,7 +212,7 @@ async function actualizarPizarra(ruta) {
         for (i = 0; i < data.length; i++) {
           horaActualizada();
           pizarra.innerHTML += `
-      <article class="moneda" id="moneda-${data[i].nombre}>
+      <article class="moneda" id="moneda-${data[i].nombre}">
       <p class="title-article-moneda">${data[i].nombre.toUpperCase()}</p>
       <img src="./img/united-states.png" class = "bandera">
             <div class="precio">
@@ -225,14 +225,18 @@ async function actualizarPizarra(ruta) {
               <p>$${data[i].venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${data[i].nombre}" class="input-star-checkbox"><label for="star-checkbox-${data[i].nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${
+            data[i].nombre
+          }" class="input-star-checkbox"><label for="star-checkbox-${
+            data[i].nombre
+          }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
       `;
         }
       } else {
         pizarra.style.maxHeight = "45vh";
         horaActualizada();
         pizarra.innerHTML = `
-  <article class="moneda" id="moneda-${data.nombre}>
+  <article class="moneda" id="moneda-${data.nombre}">
  <p class="title-article-moneda"> ${data.nombre.toUpperCase()} </p>
   <img src="${devolverBandera(data)}" class="bandera">
             <div class="precio">
@@ -245,7 +249,11 @@ async function actualizarPizarra(ruta) {
               <p>$${data.venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${
+            data.nombre
+          }" class="input-star-checkbox"><label for="star-checkbox-${
+          data.nombre
+        }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
       }
     } else {

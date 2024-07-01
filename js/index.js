@@ -212,7 +212,7 @@ async function actualizarPizarra(ruta) {
         for (i = 0; i < data.length; i++) {
           horaActualizada();
           pizarra.innerHTML += `
-      <article class="moneda" id="moneda-${data[i].nombre}>
+      <article class="moneda" id="moneda-${data[i].nombre}">
       <p class="title-article-moneda">${data[i].nombre.toUpperCase()}</p>
       <img src="./img/united-states.png" class = "bandera">
             <div class="precio">
@@ -232,8 +232,8 @@ async function actualizarPizarra(ruta) {
         pizarra.style.maxHeight = "45vh";
         horaActualizada();
         pizarra.innerHTML = `
-  <article class="moneda" id="moneda-${data.nombre}>
- <p class="title-article-moneda"> ${data.nombre.toUpperCase()} </p>
+<article class="moneda" id="moneda-${data.nombre}">
+ <p class="title-article-moneda">${data.nombre.toUpperCase()}</p>
   <img src="${devolverBandera(data)}" class="bandera">
             <div class="precio">
               <div class="precio-compra">

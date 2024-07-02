@@ -139,11 +139,7 @@ function pizarraInicio(data) {
               <p>$${data.venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${
-            data.nombre
-          }" class="input-star-checkbox"><label for="star-checkbox-${
-    data.nombre
-  }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
 
   const checkboxes = document.getElementsByClassName("input-star-checkbox");
@@ -214,7 +210,7 @@ async function actualizarPizarra(ruta) {
           pizarra.innerHTML += `
       <article class="moneda" id="moneda-${data[i].nombre}">
       <p class="title-article-moneda">${data[i].nombre.toUpperCase()}</p>
-      <img src="./img/united-states.png" class = "bandera">
+      <img src="./img/united-states.png" class ="bandera">
             <div class="precio">
               <div class="precio-compra">
                 <p>COMPRA</p>
@@ -225,24 +221,15 @@ async function actualizarPizarra(ruta) {
               <p>$${data[i].venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${
-            data[i].nombre
-          }" class="input-star-checkbox"><label for="star-checkbox-${
-            data[i].nombre
-          }" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          <input type="checkbox" id="star-checkbox-${data[i].nombre}" class="input-star-checkbox"><label for="star-checkbox-${data[i].nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
       `;
         }
       } else {
         pizarra.style.maxHeight = "45vh";
         horaActualizada();
         pizarra.innerHTML = `
-<<<<<<< HEAD
-  <article class="moneda" id="moneda-${data.nombre}">
- <p class="title-article-moneda"> ${data.nombre.toUpperCase()} </p>
-=======
 <article class="moneda" id="moneda-${data.nombre}">
  <p class="title-article-moneda">${data.nombre.toUpperCase()}</p>
->>>>>>> 13cccaf796e06033e3e8d478059ca54191c8e112
   <img src="${devolverBandera(data)}" class="bandera">
             <div class="precio">
               <div class="precio-compra">

@@ -22,12 +22,36 @@ function mandarEmail(){
             document.getElementById("email").value = "";
             document.getElementById("message").value = "";
             console.log(res);
-            alert("El mail se ha enviado correctamente!")
+            msg(true);
         })
     
-    .catch((err) => console.log(err));
+    .catch((err) => msg(false));
 }
 
-
-
-
+function msg(bool) {
+    if(bool == false){
+        Swal.fire({
+      title: "Error!",
+      text: "Error al enviar el mensaje",
+      icon: "error",
+      iconColor: "#ec3545",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#27a545",
+      background: "#111111",
+      color: "white",
+    });
+    } else {
+        Swal.fire({
+            title: "Enviado!",
+            text: "El mensaje se ha enviado correctamente",
+            icon: "success",
+            iconColor: "green",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#27a545",
+            background: "#111111",
+            color: "white",
+          });
+    }
+    
+  }
+  

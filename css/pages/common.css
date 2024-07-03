@@ -180,6 +180,30 @@ main {
   border-radius: 50%;
 }
 
+#contenedor-botones {
+  display: flex;
+  flex-direction: row;
+}
+
+.boton-carrusel {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  border: none;
+  padding: 0.6rem;
+  background-color: var(--color-dorado-principal);
+  color: var(--color-background-negro);
+  border-radius: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.boton-carrusel:hover{
+  background-color: var(--color-negro-secundario);
+  color: var(--color-dorado-principal);
+}
+
 .contenedor-barra-main {
   display: flex;
   flex-direction: column;

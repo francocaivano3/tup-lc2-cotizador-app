@@ -1,10 +1,10 @@
     window.onload = function () {
     // Variables
     const IMAGENES = [
-        '../img/persona.jpg',
-        '../img/persona2.jpg',
-        '../img/persona3.jpg',
-        '../img/persona4.jpg'
+        './img/persona.jpg',
+        './img/persona2.jpg',
+        './img/persona3.jpg',
+        './img/persona4.jpg'
     ];
     const NOMBRES = [
         'Roger Medina',

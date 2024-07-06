@@ -219,6 +219,8 @@ section::-webkit-scrollbar-thumb{
 @media screen and (min-width: 300px) and (max-width: 480px) {
     /*probar margin 20px para que no se coma las letras en el body*/
     
+  
+
     main {
         display: flex;
         flex-direction: column;
@@ -226,6 +228,7 @@ section::-webkit-scrollbar-thumb{
         flex: 1;
         box-sizing: border-box;
         width: 100%;
+        overflow-y: hidden;
       }
     
       .container {
@@ -250,8 +253,9 @@ section::-webkit-scrollbar-thumb{
       #pizarra {
         display: flex;
         flex-direction: row;
+        max-width: 80%;
         max-height: 50vh;
-        overflow-y: auto;
+        
       }
 
       #advertencia {
@@ -332,10 +336,14 @@ section::-webkit-scrollbar-thumb{
 @media screen and (min-width: 1573px) and (max-width: 1920px){
   #pizarra{
     display: flex;
-    justify-content: flex-start;
-    padding-left: 4%;
+    justify-content: center;
     gap: 10px 10px;
   }
+
+  .container, .barra-lateral {
+    height: 85vh;
+  }
+
   .moneda {
     margin: 15px 2.5%;
   }

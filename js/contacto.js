@@ -22,7 +22,7 @@ function mandarEmail(){
             document.getElementById("email").value = "";
             document.getElementById("message").value = "";
             console.log(res);
-            msg(true);
+            msg(true);  
         })
     
     .catch((err) => msg(false));

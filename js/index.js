@@ -1,9 +1,32 @@
 const selector = document.querySelector(".selector");
 const pizarra = document.getElementById("pizarra");
+const contenedorMainBarra = document.querySelector("container");
 const horaActualizacion = document.getElementById("parrafo");
 const ls = localStorage;
 let monedas = [];
-const links = [
+let lsFavoritos = 0;
+lsFavoritos = localStorage.getItem("favoritos")
+if (typeof (lsFavoritos) == "string") {
+  console.log("hpepe")
+  lsFavoritos = JSON.parse(localStorage.getItem("favoritos"))
+  lsFavoritos.forEach(moneda => monedas.push(moneda))
+}
+
+let checked = [];
+let lsChecked = 0;
+lsChecked = localStorage.getItem("checked")
+console.log(typeof(lsChecked))
+if (typeof (lsChecked) === "string") { 
+  console.log("hp")
+  lsChecked = JSON.parse(localStorage.getItem("checked"))
+  lsChecked.forEach(checkeado => checked.push(checkeado))
+}
+
+
+ls.setItem('estrella-array', '<input type="checkbox" id="star-checkbox-${data[i].nombre}" class="input-star-checkbox"><label for="star-checkbox-${data[i].nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>')
+let inputArray = ls.getItem('estrella-array')
+
+const links = [ 
   "https://dolarapi.com/v1/dolares",
   "https://dolarapi.com/v1/dolares/oficial",
   "https://dolarapi.com/v1/dolares/blue",
@@ -142,16 +165,19 @@ function pizarraInicio(data) {
           <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
 
-  const checkboxes = document.getElementsByClassName("input-star-checkbox");
-  Array.from(checkboxes).forEach((checkbox) => {
-    checkbox.addEventListener("change", async function () {
-      if (checkbox.checked) {
-        agregarFavoritos();
+  const checkbox = document.getElementById(`star-checkbox-${data.nombre}`)
+  checkbox.checked = true;
+  console.log(checkbox);
+  console.log(checkbox.checked)
+  confirmado(checkbox, data);
+  checkbox.addEventListener("change", async function () {
+       if (checkbox.checked) {
+        agregarFavoritos(checkbox);
+        guardado(checkbox)
       } else {
       }
-    });
-  });
-}
+     });
+ }
 
 selector.addEventListener("change", function () {
   switch (selector.value) {
@@ -205,6 +231,8 @@ async function actualizarPizarra(ruta) {
       const data = await respuesta.json();
       if (Array.isArray(data)) {
         pizarra.innerHTML = "";
+        pizarra.style.height = "45vh";
+        pizarra.style.width = "auto";
         for (i = 0; i < data.length; i++) {
           horaActualizada();
           pizarra.innerHTML += `
@@ -221,11 +249,14 @@ async function actualizarPizarra(ruta) {
               <p>$${data[i].venta}</p>
               </div>
               </div>
-          <input type="checkbox" id="star-checkbox-${data[i].nombre}" class="input-star-checkbox"><label for="star-checkbox-${data[i].nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
+          ${inputArray}
       `;
         }
       } else {
-        pizarra.style.maxHeight = "45vh";
+        pizarra.style.height = "300px";
+        pizarra.style.width = "45vw";
+        pizarra.style.marginLeft = "auto";
+        pizarra.style.marginRight = "auto";
         horaActualizada();
         pizarra.innerHTML = `
 <article class="moneda" id="moneda-${data.nombre}">
@@ -294,4 +325,48 @@ function horaActualizada() {
   horaActualizacion.innerHTML = `Datos actualizados a las ${hora} hs`;
 }
 
-function guardado() {}
+
+function guardado(checkbox) {
+  switch (checkbox.id) {
+    case "star-checkbox-Oficial":
+      checked.push("star-checkbox-Oficial");
+      checked = JSON.stringify(checked);
+      console.log(checked)
+      ls.setItem("checked", checked);
+      break;
+    case "star-checkbox-Blue":  
+      JSON.stringify(checked);
+      console.log(checked)
+      ls.setItem("checked", checked);
+    default:
+      break;
+  }
+ }
+
+function confirmado(checkbox, data) {
+    for (let i = 0; i < checked.length; i++) {
+      if (checked[i] == `star-checkbox-${data.nombre}`) {
+        checkbox.checked = true;
+      }
+    }
+  }
+
+// const handleMediaQueryChange = (mediaQuery) => {
+//   if (mediaQuery.matches) {
+//     // Aquí puedes ejecutar tu lógica cuando la media query se cumple
+//   } else {
+//     console.log('La media query no se cumple');
+//     // Aquí puedes ejecutar tu lógica cuando la media query no se cumple
+//   }
+// };
+
+// // Define la media query que deseas escuchar
+// const mediaQuery = window.matchMedia('(min-width: 1573px) and (max-width: 1920px)');
+
+// // Ejecuta la función de manejo inicial al cargar la página
+// handleMediaQueryChange(mediaQuery);
+
+// // Agrega un event listener para manejar cambios en la media query
+// mediaQuery.addEventListener('change', (event) => {
+//   handleMediaQueryChange(event.target); // event.target es el objeto MediaQueryList
+// })

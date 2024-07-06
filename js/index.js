@@ -4,23 +4,21 @@ const contenedorMainBarra = document.querySelector("container");
 const horaActualizacion = document.getElementById("parrafo");
 const ls = localStorage;
 let monedas = [];
-let lsFavoritos = 0;
-lsFavoritos = localStorage.getItem("favoritos")
-if (typeof (lsFavoritos) == "string") {
-  console.log("hpepe")
-  lsFavoritos = JSON.parse(localStorage.getItem("favoritos"))
-  lsFavoritos.forEach(moneda => monedas.push(moneda))
-}
+// let lsFavoritos = 0;
+// lsFavoritos = localStorage.getItem("favoritos")
+// if (typeof (lsFavoritos) == "string") {
+//   lsFavoritos = JSON.parse(localStorage.getItem("favoritos"))
+//   lsFavoritos.forEach(moneda => monedas.push(moneda))
+// }
 
-let checked = [];
-let lsChecked = 0;
-lsChecked = localStorage.getItem("checked")
-console.log(typeof(lsChecked))
-if (typeof (lsChecked) === "string") { 
-  console.log("hp")
-  lsChecked = JSON.parse(localStorage.getItem("checked"))
-  lsChecked.forEach(checkeado => checked.push(checkeado))
-}
+// let checked = [];
+// let lsChecked = 0;
+// lsChecked = localStorage.getItem("checked")
+// console.log(typeof(lsChecked))
+// if (typeof(lsChecked) == "string") { 
+//   lsChecked = JSON.parse(localStorage.getItem("checked"))
+//   lsChecked.forEach(checkeado => checked.push(checkeado))
+// }
 
 
 ls.setItem('estrella-array', '<input type="checkbox" id="star-checkbox-${data[i].nombre}" class="input-star-checkbox"><label for="star-checkbox-${data[i].nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>')
@@ -165,18 +163,18 @@ function pizarraInicio(data) {
           <input type="checkbox" id="star-checkbox-${data.nombre}" class="input-star-checkbox"><label for="star-checkbox-${data.nombre}" class="star"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></label></article>
   `;
 
-  const checkbox = document.getElementById(`star-checkbox-${data.nombre}`)
-  checkbox.checked = true;
-  console.log(checkbox);
-  console.log(checkbox.checked)
-  confirmado(checkbox, data);
-  checkbox.addEventListener("change", async function () {
-       if (checkbox.checked) {
-        agregarFavoritos(checkbox);
-        guardado(checkbox)
-      } else {
-      }
-     });
+  // const checkbox = document.getElementById(`star-checkbox-${data.nombre}`)
+  // checkbox.checked = true;
+  // console.log(checkbox);
+  // console.log(checkbox.checked)
+  // confirmado(checkbox, data);
+  // checkbox.addEventListener("change", async function () {
+  //      if (checkbox.checked) {
+  //       agregarFavoritos(checkbox);
+  //       guardado(checkbox)
+  //     } else {
+  //     }
+  //    });
  }
 
 selector.addEventListener("change", function () {
@@ -326,30 +324,30 @@ function horaActualizada() {
 }
 
 
-function guardado(checkbox) {
-  switch (checkbox.id) {
-    case "star-checkbox-Oficial":
-      checked.push("star-checkbox-Oficial");
-      checked = JSON.stringify(checked);
-      console.log(checked)
-      ls.setItem("checked", checked);
-      break;
-    case "star-checkbox-Blue":  
-      JSON.stringify(checked);
-      console.log(checked)
-      ls.setItem("checked", checked);
-    default:
-      break;
-  }
- }
+// function guardado(checkbox) {
+//   switch (checkbox.id) {
+//     case "star-checkbox-Oficial":
+//       checked.push("star-checkbox-Oficial");
+//       checked = JSON.stringify(checked);
+//       console.log(checked)
+//       ls.setItem("checked", checked);
+//       break;
+//     case "star-checkbox-Blue":  
+//       JSON.stringify(checked);
+//       console.log(checked)
+//       ls.setItem("checked", checked);
+//     default:
+//       break;
+//   }
+//  }
 
-function confirmado(checkbox, data) {
-    for (let i = 0; i < checked.length; i++) {
-      if (checked[i] == `star-checkbox-${data.nombre}`) {
-        checkbox.checked = true;
-      }
-    }
-  }
+// function confirmado(checkbox, data) {
+//     for (let i = 0; i < checked.length; i++) {
+//       if (checked[i] == `star-checkbox-${data.nombre}`) {
+//         checkbox.checked = true;
+//       }
+//     }
+//   }
 
 // const handleMediaQueryChange = (mediaQuery) => {
 //   if (mediaQuery.matches) {

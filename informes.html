@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./css/pages/common.css">
     <link rel="stylesheet" href="./css/pages/informes.css">
     <script src="./js/informes.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.min.css">
     <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -41,19 +42,18 @@
             <label id="label-select">Seleccione una moneda:</label>
             <div id="select-lupa">
                 <select name="" id="selectMoneda" class="selector">
-                  <option value="" disabled selected>Monedas:</option>
-                  <option value="dolares">Dólares</option>
-                  <option value="0">Dólar Oficial</option>
-                  <option value="1">Dólar Blue</option>
-                  <option value="2">Dólar Bolsa (MEP)</option>
-                  <option value="3">Dólar Contado con Liqui (CCL)</option>
-                  <option value="4">Dólar Tarjeta</option>
-                  <option value="5">Dólar Mayorista</option>
-                  <option value="6">Dólar Cripto</option>
-                  <option value="7">Euro</option>
-                  <option value="8">Real Brasileño</option>
-                  <option value="9">Peso Chileno</option>
-                  <option value="10">Peso Uruguayo</option>
+                  <option value="monedas">Monedas</option>
+                  <option value="Oficial">Dólar Oficial</option>
+                  <option value="Blue">Dólar Blue</option>
+                  <option value="Bolsa">Dólar Bolsa (MEP)</option>
+                  <option value="Contado con liquidación">Dólar Contado con Liqui (CCL)</option>
+                  <option value="Tarjeta">Dólar Tarjeta</option>
+                  <option value="Mayorista">Dólar Mayorista</option>
+                  <option value="Cripto">Dólar Cripto</option>
+                  <option value="Euro">Euro</option>
+                  <option value="Real Brasileño">Real Brasileño</option>
+                  <option value="Peso Chileno">Peso Chileno</option>
+                  <option value="Peso Uruguayo">Peso Uruguayo</option>
                 </select>
                 <i class="fa-solid fa-filter" id="filter"></i>
             </div>
@@ -75,13 +75,6 @@
           </thead>
 
           <tbody id="tbody">
-            <tr>
-              <td>Dólar Oficial</td>
-              <td>27/05/2024</td>
-              <td>$995</td>
-              <td>$1015</td>
-              <td><i class="fa-solid fa-arrow-down"></i></td>
-            </tr>
             
           </tbody>
         </table>
@@ -134,5 +127,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./js/graficador2.js"></script>
 <script src="./js/common.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.1/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

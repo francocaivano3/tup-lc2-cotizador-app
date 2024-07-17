@@ -1,90 +1,126 @@
+let tablaDatos = document.getElementById("tabla-informes");
+let selector = document.getElementById("selectMoneda");
+let datosLs = JSON.parse(localStorage.getItem("favoritos")) || [];
+const links = {
+  oficial: "https://dolarapi.com/v1/dolares/oficial",
+  blue: "https://dolarapi.com/v1/dolares/blue",
+  bolsa: "https://dolarapi.com/v1/dolares/bolsa",
+  ccl: "https://dolarapi.com/v1/dolares/contadoconliqui",
+  tarjeta: "https://dolarapi.com/v1/dolares/tarjeta",
+  mayorista: "https://dolarapi.com/v1/dolares/mayorista",
+  cripto: "https://dolarapi.com/v1/dolares/cripto",
+  euro: "https://dolarapi.com/v1/cotizaciones/eur",
+  real: "https://dolarapi.com/v1/cotizaciones/brl",
+  chileno: "https://dolarapi.com/v1/cotizaciones/clp",
+  uruguayo: "https://dolarapi.com/v1/cotizaciones/uyu",
+};
 
 
-let ruta;
-let selectMoneda = document.getElementById("selectMoneda");
-// let tablaInformes = document.getElementById("tabla-informes");
 
-const links = ["https://dolarapi.com/v1/dolares/oficial", "https://dolarapi.com/v1/dolares/blue",
-    "https://dolarapi.com/v1/dolares/bolsa", "https://dolarapi.com/v1/dolares/contadoconliqui",
-    "https://dolarapi.com/v1/dolares/tarjeta", "https://dolarapi.com/v1/dolares/mayorista",
-    "https://dolarapi.com/v1/dolares/cripto", "https://dolarapi.com/v1/cotizaciones/eur",
-    "https://dolarapi.com/v1/cotizaciones/brl", "https://dolarapi.com/v1/cotizaciones/clp",
-    "https://dolarapi.com/v1/cotizaciones/uyu"
-];
+window.addEventListener("load", async function() {
+  for(let dato of datosLs){
+    let flecha =  await flechaAltaBaja(dato);
+    console.log(datosLs)
+    tablaDatos.innerHTML += `
+        <tr>
+          <td>${dato.nombre}</td>
+          <td>${dato.fecha}</td>
+          <td>$${dato.compra}</td>
+          <td>$${dato.venta}</td>
+          ${flecha}
+        </tr>
+    `
+  }
+})
 
-
-selectMoneda.addEventListener("change", function(){
-  console.log(selectMoneda.value);
-  switch(selectMoneda.value){
-    case "0": 
-    ruta = links[0];
-    break;
-    case "1": 
-    ruta = links[1];
-    break;
-    case "2":
-    ruta = links[2];
-    break;
-    case "3":
-    ruta = links[3];
-    break;
-    case "4":
-    ruta = links[4];
-    break;
-    case "5":
-    ruta = links[5];
-    break;
-    case "6":
-    ruta = links[6];
-    break;
-    case "7":
-    ruta = links[7];
-    break;
-    case "8":
-    ruta = links[8];
-    break;
-    case "9":
-    ruta = links[9];
-    break;
-    case "10":
-    ruta = links[10];
-    break;
-    case "11":
-    ruta = links[11];
-    break;
-    default:
-    ruta = links[0];
-    break;
+async function datosApi(link){
+  try {
+    let response = await fetch(link);
+    if(response.ok){
+      let data = await response.json();
+      return data;
+    } else {
+      msgError();
     }
-
-    fetch(ruta)
-    .then(response => response.json())
-    .then(data => mostrarData(data));
-});
-
-
-
-function mostrarData(data){
-  console.log(data)
-
-    //ver lo del ls para los 5 dias previos
-    let hijo = document.querySelector("tbody");
-    // let arrow = data.venta ?   ternario para la flecha en alta o baja
-    const opciones = { 
-      day: '2-digit', 
-      month: '2-digit', 
-      year: 'numeric'
-    };
-    
-    let fechaFormateada = new Date(data.fechaActualizacion).toLocaleString('es-ES', opciones)
-    hijo.innerHTML = `
-              <tr>
-              <td>${data.nombre}</td>
-              <td>${fechaFormateada}</td>
-              <td>$${data.compra}</td>
-              <td>$${data.venta}</td>
-              <td><i class="fa-solid fa-arrow-down"></i></td> 
-            </tr>
-    `;
+  } catch (error) {
+    console.error("Error:", error);
+    msgError();
+  }
 }
-          
+
+async function flechaAltaBaja(dato){
+  let link = switchAltaBaja(dato);
+  let valor = await datosApi(link);
+
+  if(valor.venta > dato.venta){
+    return `<td><i class="fa-solid fa-arrow-up"></i></td>`;
+  } else if(valor.venta < dato.venta){
+    return `<td><i class="fa-solid fa-arrow-down"></i></td>`;
+  } else {
+    return `<td>-</td>`; // <td></td>
+  }
+  // <td><i class="fa-solid fa-arrow-down"></i></td>
+}
+
+
+function switchAltaBaja(dato) {
+  switch(dato.nombre){
+    case "Oficial":
+      return links["oficial"];
+
+    case "Blue":
+      return links["blue"];
+
+    case "Bolsa":
+      return links["bolsa"];
+
+    case "Contado con liquidación":
+      return links["ccl"];
+
+    case "Tarjeta":
+      return links["tarjeta"];
+
+    case "Mayorista":
+      return links["mayorista"];
+
+    case "Cripto":
+      return links["cripto"];
+
+    case "Euro":
+      return links["euro"];
+
+    case "Real Brasileño":
+      return links["real"];
+
+    case "Peso Chileno":
+      return links["chileno"];
+
+    case "Peso Uruguayo":
+      return links["uruguayo"];
+  }
+}
+
+function msgError() {
+  Swal.fire({
+    title: "Error!",
+    text: "Error al cargar la API",
+    icon: "error",
+    iconColor: "#ec3545",
+    confirmButtonText: "Aceptar",
+    confirmButtonColor: "#27a545",
+    background: "#111111",
+    color: "white",
+  });
+}
+
+
+
+
+/* <tbody id="tbody">
+<tr>
+  <td>Dólar Oficial</td>
+  <td>27/05/2024</td>
+  <td>$995</td>
+  <td>$1015</td>
+  <td><i class="fa-solid fa-arrow-down"></i></td>
+</tr> */

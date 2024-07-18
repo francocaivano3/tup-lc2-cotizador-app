@@ -1,15 +1,18 @@
 const ls = localStorage
-let datoLS = JSON.parse(ls.getItem("favoritos")) || [];
+let datosLS = JSON.parse(ls.getItem("favoritos")) || [];
 const tabla = document.getElementById("table-body");
-let fecha = today;
-let fechaCotizacion = ``;
+let fechas = [];
+let fechaSinDuplicados = [];
+let cotizacion = ``;
+const opciones = {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric"
+};
 
 window.addEventListener("load", function () {
-  if (datoLS.length > 0) {
-
- 
-    
-
+  if (datosLS.length > 0) {
+    cargarDatos();
   } else {
     Swal.fire({
      title: "Advertencia",
@@ -26,24 +29,58 @@ window.addEventListener("load", function () {
 })
 
 function cargarDatos() {
-  for (dato of datosLs) {
-      if (dato.fechaActualizacion == fecha) {
-        if (fechaCotizacion) {
-          fechaCotizacion = `${fecha}`
-          tabla.innerHTML = `<tr> <td class="fecha escrita" colspan="5">${fechaCotizacion}</td></tr>
-                             <tr>coso</tr> `
+  cargarFecha()
+  fechaSinDuplicados = [...new Set(fechas)];
+  for (fecha of fechaSinDuplicados) {
+    for (dato of datosLS) {
+      let fechaDato = new Date(dato.fechaActualizacion);
+      let fechaFormateada = fechaDato.toLocaleDateString("es-ES", opciones);
+      if (fecha == fechaFormateada) {
+        if (cotizacion) {
+          tabla.innerHTML += `<tr>
+                  <td></td>
+                  <td>${dato.nombre}</td>
+                  <td class="td-numeros-compra">${dato.compra}</td>
+                  <td class="td-numeros">${dato.venta}</td>
+                  <td class="goma"> <button><i class="fas fa-eraser"></i></button></td>
+                  </tr>`
         } else {
-          //cargar elementos
-        }
+          cotizacion = `nv`
+          tabla.innerHTML += `<tr> <td class="fecha escrita" colspan="5">${fecha}</td></tr>`
+          tabla.innerHTML += `<tr>
+                  <td></td>
+                  <td>${dato.nombre}</td>
+                  <td class="td-numeros-compra">${dato.compra}</td>
+                  <td class="td-numeros">${dato.venta}</td>
+                  <td class="goma"> <button><i class="fas fa-eraser"></i></button></td>
+                  </tr>`
+      }
+      }
     }
+    cotizacion = ``
   }
 }
 
-/*  
+function cargarFecha() {
+  datosLS.sort((a, b) => {
+    if (a.nombre < b.nombre) {
+        return -1;
+    }
+    if (a.nombre > b.nombre) {
+        return 1;
+    }
 
-array acumula objetos de una fecha especifica
+    const fechaA = new Date(a.fechaActualizacion);
+    const fechaB = new Date(b.fechaActualizacion);
 
+    return fechaB - fechaA; 
+  });
 
+  for (dato of datosLS) {
+    let fecha = new Date(dato.fechaActualizacion);
+    let fechaFormateada = fecha.toLocaleDateString("es-ES", opciones);
+    fechas.push(fechaFormateada);
+  
+  }
+}
 
-
-*/

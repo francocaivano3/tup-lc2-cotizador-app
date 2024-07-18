@@ -195,9 +195,6 @@ function horaActualizada() {
 }
 
 
-
-
-
 setInterval(() => {
   pizarra.innerHTML = "";
   obtenerCotizaciones(links);

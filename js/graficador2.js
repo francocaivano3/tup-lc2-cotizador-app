@@ -49,6 +49,8 @@ async function obtenerDatos(casa) {
     if (respuesta.ok) {
       const data = await respuesta.json();
       return data;
+    } else {
+      throw new Error(`Error en la API: ${respuesta.status}`);
     }
   } catch (error){
     console.log("Error", error);
@@ -76,12 +78,14 @@ async function cargarValores(){
     const nombre = dato.nombre.toLowerCase();
     const obtenerDatoVenta = await obtenerDatos(dato.nombre.toLowerCase());
     
-    if (nombre in valoresLs){
-      if(valoresLs[nombre][valoresLs[nombre].length - 1].fechaActualizacion !== obtenerDatoVenta.fechaActualizacion){
-        valoresLs[nombre].push(obtenerDatoVenta.venta);
+    if (obtenerDatoVenta) {
+      if (!valoresLs[nombre]){
+        valoresLs[nombre] = {};
       }
-    } else {
-      valoresLs[nombre] = [dato.venta, obtenerDatoVenta.venta];
+
+      if (!valoresLs[nombre][obtenerDatoVenta.fechaActulizacion]){
+        valoresLs[nombre][obtenerDatoVenta.fechaActulizacion] = obtenerDatoVenta.venta;
+      }
     }
   }
   console.log(valoresLs);
@@ -96,12 +100,12 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 function crearChart(){
-  const moneda = completarChart();
-          myChart = new Chart(ctx, {
+  const datasets = completarChart();
+  const myChart = new Chart(ctx, {
             type: "line",
             data: {
               labels: fechas,
-              datasets: moneda,
+              datasets: datasets,
               },
               options: {
                 responsive: true,
@@ -120,14 +124,18 @@ function completarChart(){
 
   for (let dato of datosLs){
     const nombre = dato.nombre.toLowerCase();
-    arrObj.push({
+    const datosPorMoneda = valoresLs[nombre] || [];
+
+  const data = fechas.map(fecha => datosPorMoneda[fecha] || null);
+  arrObj.push({
     label: dato.nombre,
-    data: valoresLs[nombre],
-    backgroundColor: colorFondo(), 
-    borderColor: colorBorde(),
+    data: data,
+    backgroundColor: colorFondo(arrObj.length), 
+    borderColor: colorBorde(arrObj.length),
     borderWidth: 1,
     fill: true,
   });
+  
 }
 console.log(arrObj);
 return arrObj;

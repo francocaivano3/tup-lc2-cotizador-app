@@ -1,6 +1,7 @@
 const select = document.getElementById("selectMoneda");
 const tabla = document.getElementById("tbody");
 const ctx = document.getElementById("miGrafica").getContext("2d");
+const ls = JSON.parse(localStorage.getItem("favoritos")) || [];
 const rutas = [
   "https://dolarapi.com/v1/dolares",
   "https://dolarapi.com/v1/dolares/oficial",
@@ -47,11 +48,10 @@ async function obtenerDatos(casa) {
     respuesta = await fetch(`https://dolarapi.com/v1/dolares/${casa}`);
     if (respuesta.ok) {
       const data = await respuesta.json();
-      const dataVenta = data.venta;
-      return dataVenta;
+      return data;
     }
-  } catch {
-    console.log("error datos hoy");
+  } catch (error){
+    console.log("Error", error);
   }
 }
 
@@ -68,16 +68,70 @@ let valores = {
     "clp":[90, 92, 93, 94, 95, 96, 97],
     "uyu":[35, 40, 45, 44, 43, 46, 47]
 }
-// async function rta(casa) {
-//     let cotizacion;
-//     cotizacion = await obtenerDatos(casa)
-//     arrayValores.push(cotizacion);
-//     return arrayValores
-// }
+
+let valoresLs = {};
+
+async function cargarValores(){
+  for (let dato of ls) {
+    const nombre = dato.nombre.toLowerCase();
+    const obtenerDatoVenta = await obtenerDatos(dato.nombre.toLowerCase());
+    
+    if (nombre in valoresLs){
+      if(valoresLs[nombre][valoresLs[nombre].length - 1].fechaActualizacion !== obtenerDatoVenta.fechaActualizacion){
+        valoresLs[nombre].push(obtenerDatoVenta.venta);
+      }
+    } else {
+      valoresLs[nombre] = [dato.venta, obtenerDatoVenta.venta];
+    }
+  }
+  console.log(valoresLs);
+}
+
 
 document.addEventListener("DOMContentLoaded", async function() {
+  await cargarValores();
   crearChart();
 });
+
+
+
+function crearChart(){
+  const moneda = completarChart();
+          myChart = new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: fechas,
+              datasets: moneda,
+              },
+              options: {
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: "top",
+                  },
+                }
+              }
+            });
+            myChart.update();
+          }
+          
+function completarChart(){
+  let arrObj = [];
+
+  for (let dato of datosLs){
+    const nombre = dato.nombre.toLowerCase();
+    arrObj.push({
+    label: dato.nombre,
+    data: valoresLs[nombre],
+    backgroundColor: colorFondo(), 
+    borderColor: colorBorde(),
+    borderWidth: 1,
+    fill: true,
+  });
+}
+console.log(arrObj);
+return arrObj;
+}
 
 
 function colorBorde(index) {
@@ -89,115 +143,3 @@ function colorBorde(index) {
     const colors = ["#cce6f4", "#fce6d4", "#f4cccc", "#d6e8f0", "#d4edd6", "#fef3cd", "#e6d7e9", "#ffe3e4", "#f5eee7", "#f0efee", "#f9c8a6"];
     return colors[index % colors.length];
   }
-
-    function crearChart(){
-          myChart = new Chart(ctx, {
-              type: "line",
-              data: {
-              labels: fechas,
-              datasets: [
-                  
-                  {
-                  
-                  label: "Dolar Oficial",
-                  data: valores.oficial,
-                  backgroundColor: colorFondo(), // Color de fondo
-                  borderColor: colorBorde(),
-                  borderWidth: 1,
-                  fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Dolar Blue",
-                      data: valores.blue,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Dolar Bolsa",
-                      data: valores.bolsa,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Dolar CCL",
-                      data: valores.contadoconliqui,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Dolar Tarjeta",
-                      data: valores.tarjeta,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Dolar Mayorista",
-                      data: valores.mayorista,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Dolar Cripto",
-                      data: valores.cripto,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Euro",
-                      data: valores.euro,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Real Brasileño",
-                      data: valores.brl,
-                      borderColor: "colorBorde()n", // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Peso Chileno",
-                      data: valores.clp,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  },
-                  {
-                      //Ejemplo de gráfica con relleno
-                      label: "Peso Uruguayo",
-                      data: valores.uyu,
-                      backgroundColor: colorFondo(), // Color de fondo
-                      borderColor: colorBorde(),
-                      borderWidth: 1,
-                      fill: true,
-                  }
-              ],
-              },
-          });
-          myChart.update();
-      }

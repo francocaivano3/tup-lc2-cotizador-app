@@ -1,5 +1,6 @@
 let tablaDatos = document.getElementById("tabla-informes");
 let selector = document.getElementById("selectMoneda");
+const main = document.getElementById("main");
 let datosLs = JSON.parse(localStorage.getItem("favoritos")) || [];
 const links = {
   oficial: "https://dolarapi.com/v1/dolares/oficial",
@@ -18,13 +19,39 @@ const links = {
 
 
 window.addEventListener("load", async function() {
-  for(let dato of datosLs){
-    let flecha =  await flechaAltaBaja(dato);
-    console.log(datosLs)
+
+datosLs.sort((a, b) => {
+    if (a.nombre < b.nombre) {
+        return -1;
+    }
+    if (a.nombre > b.nombre) {
+        return 1;
+    }
+
+  const fechaA = new Date(a.fechaActualizacion);
+  const fechaB = new Date(b.fechaActualizacion);
+  
+  return fechaB - fechaA; 
+});
+
+const opciones = {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric"
+};
+
+
+for(let dato of datosLs){
+    let fecha = new Date(dato.fechaActualizacion); 
+    
+    let fechaFormateada = fecha.toLocaleDateString("es-ES", opciones);
+    
+    let flecha = await flechaAltaBaja(dato);
+    
     tablaDatos.innerHTML += `
         <tr>
           <td>${dato.nombre}</td>
-          <td>${dato.fecha}</td>
+          <td>${fechaFormateada}</td>
           <td>$${dato.compra}</td>
           <td>$${dato.venta}</td>
           ${flecha}
@@ -57,9 +84,8 @@ async function flechaAltaBaja(dato){
   } else if(valor.venta < dato.venta){
     return `<td><i class="fa-solid fa-arrow-down"></i></td>`;
   } else {
-    return `<td>-</td>`; // <td></td>
+    return `<td>-</td>`; 
   }
-  // <td><i class="fa-solid fa-arrow-down"></i></td>
 }
 
 

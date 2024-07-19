@@ -2,6 +2,7 @@ let tablaDatos = document.getElementById("tabla-informes");
 let selector = document.getElementById("selectMoneda");
 const main = document.getElementById("main");
 let datosLs = JSON.parse(localStorage.getItem("favoritos")) || [];
+let compartirInfo = document.getElementById("compartir-informacion");
 const links = {
   oficial: "https://dolarapi.com/v1/dolares/oficial",
   blue: "https://dolarapi.com/v1/dolares/blue",
@@ -60,6 +61,78 @@ for(let dato of datosLs){
   }
 })
 
+
+selector.addEventListener("change", async function(){
+  let moneda = selector.value;
+
+  tablaDatos.innerHTML = `
+    <tr>
+      <th>Moneda</th>
+      <th>Fecha</th>
+      <th>Compra</th>
+      <th>Venta</th>
+      <th>Variación</th>
+    </tr>
+  `;
+
+  const opciones = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  };
+  if (moneda === "monedas"){
+    for(let dato of datosLs){
+      let fecha = new Date(dato.fechaActualizacion); 
+      let fechaFormateada = fecha.toLocaleDateString("es-ES", opciones);
+      let flecha = await flechaAltaBaja(dato);
+
+      tablaDatos.innerHTML += `
+      <tr>
+          <td>${dato.nombre}</td>
+          <td>${fechaFormateada}</td>
+          <td>$${dato.compra}</td>
+          <td>$${dato.venta}</td>
+          ${flecha}
+        </tr>
+      `
+    }
+  } else if(moneda !== "monedas"){
+    let bandera = false;
+    for (let dato of datosLs){
+      if(moneda == dato.nombre){
+        let fecha = new Date(dato.fechaActualizacion); 
+        let fechaFormateada = fecha.toLocaleDateString("es-ES", opciones);
+        let flecha = await flechaAltaBaja(dato);
+        if(moneda === dato.nombre){
+          tablaDatos.innerHTML += `
+          <tr>
+                <td>${dato.nombre}</td>
+                <td>${fechaFormateada}</td>
+                <td>$${dato.compra}</td>
+                <td>$${dato.venta}</td>
+                ${flecha}
+              </tr>
+          `
+        }
+        bandera = true;
+      } 
+    }
+    if(!bandera){
+      Swal.fire({
+        title: "Advertencia",
+        color:"#cccccc",
+       text: `No tienes ${moneda} en favoritos`,
+       icon: "warning",
+       iconColor:"#eabe3f",
+       showCancelButton: false,
+       confirmButtonColor: "#27a545",
+       background: "#111111",
+       confirmButtonText: "Aceptar"
+     })
+    }
+  }
+})
+
 async function datosApi(link){
   try {
     let response = await fetch(link);
@@ -87,6 +160,55 @@ async function flechaAltaBaja(dato){
     return `<td>-</td>`; 
   }
 }
+
+compartirInfo.addEventListener("click", function(){
+  Swal.fire({
+    title: "Ingrese sus datos",
+    html: `<form id="formulario">
+    <label>Nombre</label><br>
+    <input type="text" id="nombre" required><br>
+    <label>Tu Email</label><br>
+    <input type="email" id="email" required><br>
+    <label>Destinatario</label><br>
+    <input type="email" id="destinatario" required><br><br>
+    <button type="button" onclick="enviarEmail()">Enviar</button>
+    </form>`,
+    showConfirmButton: false
+  });
+  
+})
+
+
+function enviarEmail(){
+    const tabla = document.getElementById("tabla-informes");
+  
+    let tablaTexto = "";
+    for (let row of tabla.rows) {
+        for (let cell of row.cells) {
+            tablaTexto += cell.innerText + "\t";
+        }
+        tablaTexto += "\n";
+    }
+
+    let parametros = {
+      name: document.getElementById("nombre").value,
+      email: document.getElementById("email").value,
+      destinatario: document.getElementById("destinatario").value,
+      message: tablaTexto
+    };
+
+    const serviceId = "service_i4fujln";
+    const templateId = "template_7oqfvyp";
+
+    emailjs.send(serviceId, templateId, parametros)
+      .then(res => {
+        document.getElementById("nombre").value = "";
+        document.getElementById("destinatario").value = "";
+        msg(true);
+      })
+      .catch(err => msg(false));
+    
+  }
 
 
 function switchAltaBaja(dato) {
@@ -126,18 +248,32 @@ function switchAltaBaja(dato) {
   }
 }
 
-function msgError() {
-  Swal.fire({
-    title: "Error!",
-    text: "Error al cargar la API",
-    icon: "error",
-    iconColor: "#ec3545",
-    confirmButtonText: "Aceptar",
-    confirmButtonColor: "#27a545",
-    background: "#111111",
-    color: "white",
-  });
+function msg(bool) {
+  if(bool === false){
+    Swal.fire({
+      title: "Error!",
+      text: "Error al enviar el mensaje.",
+      icon: "error",
+      iconColor: "#ec3545",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#27a545",
+      background: "#111111",
+      color: "white",
+    });
+  } else if(bool === true){
+    Swal.fire({
+      title: "Enviado!",
+      text: "La información se ha enviado correctamente.",
+      icon: "success",
+      iconColor: "#008000",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#27a545",
+      background: "#111111",
+      color: "white",
+    });
+  }
 }
+
 
 
 

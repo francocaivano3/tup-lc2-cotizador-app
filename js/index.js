@@ -1,6 +1,6 @@
 const selector = document.querySelector(".selector");
 const pizarra = document.getElementById("pizarra");
-const contenedorMainBarra = document.querySelector("container");
+const contenedorMainBarra = document.querySelector(".container");
 const horaActualizacion = document.getElementById("parrafo");
 const ls = localStorage;
 let monedas = [];

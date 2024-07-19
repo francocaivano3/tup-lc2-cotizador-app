@@ -67,7 +67,7 @@ let myChart;
 
 async function cargarValores(){
   for (let dato of infoLs) {
-    const nombre = dato.nombre.toLowerCase();
+    const nombre = dato.nombre;
     const obtenerDatoVenta = await obtenerDatos(nombre);
     
     if (obtenerDatoVenta) {
@@ -81,12 +81,13 @@ async function cargarValores(){
       const dia = fechaActualizacion.getDate().toString().padStart(2, '0');
       const fechaFormateada = `${año}/${mes}/${dia}`;
 
-      if (!valoresLs[nombre][fechaFormateada]){
+      if (obtenerDatoVenta.venta){
         valoresLs[nombre][fechaFormateada] = obtenerDatoVenta.venta;
       }
+
+      console.log(`Datos guardados para ${nombre}:`, valoresLs[nombre]);
     }
   }
-  console.log("Valores cargados: ", valoresLs);
 }
 
 
@@ -125,6 +126,9 @@ function completarChart(){
     const datosPorMoneda = valoresLs[nombre] || [];
 
   const data = fechas.map(fecha => datosPorMoneda[fecha] || null);
+
+  console.log(`Datos parra ${nombre}: `, data);
+
   arrObj.push({
     label: dato.nombre,
     data: data,
@@ -135,7 +139,7 @@ function completarChart(){
   });
 
 }
-console.log(arrObj);
+console.log(arrObj)
 return arrObj;
 }
 
@@ -159,3 +163,5 @@ function colorBorde(index) {
       myChart.update(); // Actualiza el gráfico
     }
   }
+  console.log("ValoresLs: ", valoresLs)
+  console.log("Fechas: ", fechas);

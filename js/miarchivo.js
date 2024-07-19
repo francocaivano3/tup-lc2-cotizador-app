@@ -13,6 +13,7 @@ const opciones = {
 window.addEventListener("load", function () {
   if (datosLS.length > 0) {
     cargarDatos();
+    
   } else {
     Swal.fire({
      title: "Advertencia",
@@ -37,22 +38,22 @@ function cargarDatos() {
       let fechaFormateada = fechaDato.toLocaleDateString("es-ES", opciones);
       if (fecha == fechaFormateada) {
         if (cotizacion) {
-          tabla.innerHTML += `<tr>
+          tabla.innerHTML += `<tr class="eliminar">
                   <td></td>
-                  <td>${dato.nombre}</td>
+                  <td class="${dato.fechaActualizacion}">${dato.nombre}</td>
                   <td class="td-numeros-compra">$${dato.compra}</td>
                   <td class="td-numeros">$${dato.venta}</td>
-                  <td class="goma"> <button><i class="fas fa-eraser"></i></button></td>
+                  <td class="goma"> <button onclick="eliminar(this)"><i class="fas fa-eraser"></i></button></td>
                   </tr>`
         } else {
           cotizacion = `nv`
-          tabla.innerHTML += `<tr> <td class="fecha escrita" colspan="5">${fecha}</td></tr>`
-          tabla.innerHTML += `<tr>
+          tabla.innerHTML += `<tr id="fecha"> <td class="fecha escrita" colspan="5">${fecha}</td></tr>`
+          tabla.innerHTML += `<tr class="eliminar">
                   <td></td>
-                  <td>${dato.nombre}</td>
+                  <td class="${dato.fechaActualizacion}">${dato.nombre}</td>
                   <td class="td-numeros-compra">$${dato.compra}</td>
                   <td class="td-numeros">$${dato.venta}</td>
-                  <td class="goma"> <button><i class="fas fa-eraser"></i></button></td>
+                  <td class="goma"> <button onclick="eliminar(this)"><i class="fas fa-eraser"></i></button></td>
                   </tr>`
       }
       }
@@ -84,3 +85,44 @@ function cargarFecha() {
   }
 }
 
+function eliminar(btn) {
+  let arrayMonedas = []
+  let monedaEliminada = btn.parentNode.parentNode
+  for (dato of datosLS) { arrayMonedas.push(dato) }
+  
+  // if (btn.parentNode.parentNode.previousSibling.id == "fecha" && btn.parentNode.parentNode.previousSibling.class == "eliminar") {
+  //   btn.parentNode.parentNode.previousSibling.remove();
+  //   monedaEliminada.remove();
+  //   console.log("sd")
+  //   eliminarMoneda(arrayMonedas, btn);
+  // }if (btn.parentNode.parentNode.nextSibling == null) {
+    btn.parentNode.parentNode.previousSibling.remove();
+    monedaEliminada.remove();
+    eliminarMoneda(arrayMonedas, btn);
+  }else if (btn.parentNode.parentNode.previousSibling.id == "fecha" && btn.parentNode.parentNode.nextSibling.id == "fecha") {
+    btn.parentNode.parentNode.previousSibling.remove();
+    monedaEliminada.remove();
+    eliminarMoneda(arrayMonedas, btn);
+  }else {
+    monedaEliminada.remove();
+    eliminarMoneda(arrayMonedas, btn);
+  }
+}
+
+function eliminarMoneda(arrayMonedas, btn) {
+  console.log("a")
+  for (let i = 0; i < arrayMonedas.length; i++) {
+      if (arrayMonedas[i].fechaActualizacion === btn.parentNode.previousSibling.previousSibling.previousSibling.class) {
+        datosLS = datosLS.filter(function (elemento) {
+          return !(
+            elemento.nombre === arrayMonedas[i].nombre &&
+            elemento.compra === arrayMonedas[i].compra &&
+            elemento.venta === arrayMonedas[i].venta &&
+            elemento.fechaActualizacion === arrObjMonedas[i].fechaActualizacion
+          );
+        });
+        break;
+      }
+    }
+  ls.setItem("favoritos", JSON.stringify(datosLS));
+}

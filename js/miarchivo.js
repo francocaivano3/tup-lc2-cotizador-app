@@ -40,8 +40,8 @@ function cargarDatos() {
           tabla.innerHTML += `<tr>
                   <td></td>
                   <td>${dato.nombre}</td>
-                  <td class="td-numeros-compra">${dato.compra}</td>
-                  <td class="td-numeros">${dato.venta}</td>
+                  <td class="td-numeros-compra">$${dato.compra}</td>
+                  <td class="td-numeros">$${dato.venta}</td>
                   <td class="goma"> <button><i class="fas fa-eraser"></i></button></td>
                   </tr>`
         } else {
@@ -50,8 +50,8 @@ function cargarDatos() {
           tabla.innerHTML += `<tr>
                   <td></td>
                   <td>${dato.nombre}</td>
-                  <td class="td-numeros-compra">${dato.compra}</td>
-                  <td class="td-numeros">${dato.venta}</td>
+                  <td class="td-numeros-compra">$${dato.compra}</td>
+                  <td class="td-numeros">$${dato.venta}</td>
                   <td class="goma"> <button><i class="fas fa-eraser"></i></button></td>
                   </tr>`
       }

@@ -2,33 +2,32 @@ const select = document.getElementById("selectMoneda");
 const tabla = document.getElementById("tbody");
 const ctx = document.getElementById("miGrafica").getContext("2d");
 const ls = JSON.parse(localStorage.getItem("favoritos")) || [];
-const rutas = [
-  "https://dolarapi.com/v1/dolares",
-  "https://dolarapi.com/v1/dolares/oficial",
-  "https://dolarapi.com/v1/dolares/blue",
-  "https://dolarapi.com/v1/dolares/bolsa",
-  "https://dolarapi.com/v1/dolares/contadoconliqui",
-  "https://dolarapi.com/v1/dolares/tarjeta",
-  "https://dolarapi.com/v1/dolares/mayorista",
-  "https://dolarapi.com/v1/dolares/cripto",
-  "https://dolarapi.com/v1/cotizaciones/eur",
-  "https://dolarapi.com/v1/cotizaciones/brl",
-  "https://dolarapi.com/v1/cotizaciones/clp",
-  "https://dolarapi.com/v1/cotizaciones/uyu",
-];
-
-const monedas = [
-  "Dólar Oficial",
-  "Dólar Blue",
-  "Dólar Bolsa",
-  "Dólar CCL",
-  "Dólar Tarjeta",
-  "Dólar Mayorista",
-  "Dólar Cripto",
-  "Euro",
-  "Real Brasileño",
-  "Peso Chileno",
-  "Peso Uruguayo"]
+const rutas = {
+  "oficial": "https://dolarapi.com/v1/dolares/oficial",
+  "blue": "https://dolarapi.com/v1/dolares/blue",
+  "bolsa": "https://dolarapi.com/v1/dolares/bolsa",
+  "contadoconliqui": "https://dolarapi.com/v1/dolares/contadoconliqui",
+  "tarjeta": "https://dolarapi.com/v1/dolares/tarjeta",
+  "mayorista": "https://dolarapi.com/v1/dolares/mayorista",
+  "cripto": "https://dolarapi.com/v1/dolares/cripto",
+  "eur": "https://dolarapi.com/v1/cotizaciones/eur",
+  "brl": "https://dolarapi.com/v1/cotizaciones/brl",
+  "clp": "https://dolarapi.com/v1/cotizaciones/clp",
+  "uyu": "https://dolarapi.com/v1/cotizaciones/uyu"
+};
+const infoLs = [
+  {nombre: "oficial" },
+  {nombre: "blue" },
+  {nombre: "bolsa" },
+  {nombre: "contadoconliqui" },
+  {nombre: "tarjeta" },
+  {nombre: "mayorista" },
+  {nombre: "cripto" },
+  {nombre: "eur" },
+  {nombre: "brl" },
+  {nombre: "clp" },
+  {nombre: "uyu" },
+]
 
 const fechaActual = new Date();
 let fechas = [];
@@ -36,59 +35,58 @@ let fechas = [];
 for (let i = 6; i >= 0; i--) {
   let fecha = new Date(fechaActual);
   fecha.setDate(fecha.getDate() - i);
-  let dia = fecha.getDate();
-  let mes = fecha.getMonth() + 1;
+  let dia = fecha.getDate().toString().padStart(2, "0");
+  let mes = (fecha.getMonth() + 1).toString().padStart(2, "0");
   let año = fecha.getFullYear();
-  let fechaFormateada = `${año}/${mes.toString().padStart(2, "0")}/${dia.toString().padStart(2, "0")}`;
+  let fechaFormateada = `${año}/${mes}/${dia}`;
   fechas.push(fechaFormateada);
 }
 
 async function obtenerDatos(casa) {
   try {
-    respuesta = await fetch(`https://dolarapi.com/v1/dolares/${casa}`);
-    if (respuesta.ok) {
+   const url = rutas[casa];
+    if(!url){
+      throw new Error(`URL de ${casa} no encontrada`)
+    }
+    const respuesta = await fetch(url);
+    if(respuesta.ok){
       const data = await respuesta.json();
+      console.log(`Datos obtenidos para ${casa}: `, data);
       return data;
     } else {
-      throw new Error(`Error en la API: ${respuesta.status}`);
-    }
-  } catch (error){
-    console.log("Error", error);
+      throw new Error(`Error en la API para ${casa}: $  {respuesta.status}`);
+    } 
+  } catch (error) {
+    console.log("Error: ", error)
   }
-}
-
-let valores = {
-    "oficial":[950, 955, 960, 965, 970, 975, 980],
-    "blue":[952, 955, 966, 968, 979, 988, 993],
-    "bolsa":[930, 935, 955, 930, 940, 938, 952],
-    "contadoconliqui":[1000, 1010, 1020, 1014, 1043, 1047, 1040],
-    "tarjeta":[1200, 1232, 1130, 1150, 1170, 1154, 1300],
-    "mayorista":[1235, 1250, 1300, 1350, 1300, 1350, 1355],
-    "cripto":[1120, 1290, 1250, 1300, 1355, 1300, 1320],
-    "euro":[1500, 1523, 1520, 1515, 1532, 1530, 1531],
-    "brl":[150, 160, 167, 190, 194, 200, 220],
-    "clp":[90, 92, 93, 94, 95, 96, 97],
-    "uyu":[35, 40, 45, 44, 43, 46, 47]
+  
 }
 
 let valoresLs = {};
+let myChart;
 
 async function cargarValores(){
-  for (let dato of ls) {
+  for (let dato of infoLs) {
     const nombre = dato.nombre.toLowerCase();
-    const obtenerDatoVenta = await obtenerDatos(dato.nombre.toLowerCase());
+    const obtenerDatoVenta = await obtenerDatos(nombre);
     
     if (obtenerDatoVenta) {
       if (!valoresLs[nombre]){
         valoresLs[nombre] = {};
       }
 
-      if (!valoresLs[nombre][obtenerDatoVenta.fechaActulizacion]){
-        valoresLs[nombre][obtenerDatoVenta.fechaActulizacion] = obtenerDatoVenta.venta;
+      const fechaActualizacion = new Date(obtenerDatoVenta.fechaActualizacion);
+      const año = fechaActualizacion.getFullYear();
+      const mes = (fechaActualizacion.getMonth() + 1).toString().padStart(2, '0');
+      const dia = fechaActualizacion.getDate().toString().padStart(2, '0');
+      const fechaFormateada = `${año}/${mes}/${dia}`;
+
+      if (!valoresLs[nombre][fechaFormateada]){
+        valoresLs[nombre][fechaFormateada] = obtenerDatoVenta.venta;
       }
     }
   }
-  console.log(valoresLs);
+  console.log("Valores cargados: ", valoresLs);
 }
 
 
@@ -101,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 function crearChart(){
   const datasets = completarChart();
-  const myChart = new Chart(ctx, {
+  myChart = new Chart(ctx, {
             type: "line",
             data: {
               labels: fechas,
@@ -116,13 +114,13 @@ function crearChart(){
                 }
               }
             });
-            myChart.update();
+            setInterval(() => actualizarDatos(), 24 * 60 * 60 * 1000);
           }
           
 function completarChart(){
   let arrObj = [];
 
-  for (let dato of datosLs){
+  for (let dato of infoLs){
     const nombre = dato.nombre.toLowerCase();
     const datosPorMoneda = valoresLs[nombre] || [];
 
@@ -135,7 +133,7 @@ function completarChart(){
     borderWidth: 1,
     fill: true,
   });
-  
+
 }
 console.log(arrObj);
 return arrObj;
@@ -150,4 +148,14 @@ function colorBorde(index) {
   function colorFondo(index) {
     const colors = ["#cce6f4", "#fce6d4", "#f4cccc", "#d6e8f0", "#d4edd6", "#fef3cd", "#e6d7e9", "#ffe3e4", "#f5eee7", "#f0efee", "#f9c8a6"];
     return colors[index % colors.length];
+  }
+
+
+  // codigo de prueba para mañana 
+  async function actualizarDatos() {
+    await cargarValores();
+    if (myChart) {
+      myChart.data.datasets = completarChart(); // Actualiza los datos
+      myChart.update(); // Actualiza el gráfico
+    }
   }

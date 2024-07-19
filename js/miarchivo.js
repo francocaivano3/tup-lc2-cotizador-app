@@ -94,8 +94,8 @@ function eliminar(btn) {
   //   btn.parentNode.parentNode.previousSibling.remove();
   //   monedaEliminada.remove();
   //   console.log("sd")
-  //   eliminarMoneda(arrayMonedas, btn);
-  // }if (btn.parentNode.parentNode.nextSibling == null) {
+  //   eliminarMoneda(arrayMonedas, btn);}
+  if (btn.parentNode.parentNode.nextSibling == null) {
     btn.parentNode.parentNode.previousSibling.remove();
     monedaEliminada.remove();
     eliminarMoneda(arrayMonedas, btn);

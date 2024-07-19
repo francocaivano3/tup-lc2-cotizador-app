@@ -92,6 +92,7 @@ async function cargarValores(){
 
 
 document.addEventListener("DOMContentLoaded", async function() {
+  cargarDatosDesdeLocalStorage();
   await cargarValores();
   crearChart();
 });
@@ -158,10 +159,21 @@ function colorBorde(index) {
   // codigo de prueba para mañana 
   async function actualizarDatos() {
     await cargarValores();
+    guardarDatosEnLocalStorage();
     if (myChart) {
       myChart.data.datasets = completarChart(); // Actualiza los datos
       myChart.update(); // Actualiza el gráfico
     }
   }
-  console.log("ValoresLs: ", valoresLs)
-  console.log("Fechas: ", fechas);
+  //prueba 
+  function guardarDatosEnLocalStorage() {
+    localStorage.setItem('valoresLs', JSON.stringify(valoresLs));
+  }
+  
+  function cargarDatosDesdeLocalStorage() {
+    const datosGuardados = localStorage.getItem('valoresLs');
+    if (datosGuardados) {
+      valoresLs = JSON.parse(datosGuardados);
+    }
+  }
+  

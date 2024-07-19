@@ -90,12 +90,7 @@ function eliminar(btn) {
   let monedaEliminada = btn.parentNode.parentNode
   for (dato of datosLS) { arrayMonedas.push(dato) }
   
-  // if (btn.parentNode.parentNode.previousSibling.id == "fecha" && btn.parentNode.parentNode.previousSibling.class == "eliminar") {
-  //   btn.parentNode.parentNode.previousSibling.remove();
-  //   monedaEliminada.remove();
-  //   console.log("sd")
-  //   eliminarMoneda(arrayMonedas, btn);}
-  if (btn.parentNode.parentNode.nextSibling == null) {
+  if (btn.parentNode.parentNode.nextSibling == null && btn.parentNode.parentNode.previousSibling.id == "fecha") {
     btn.parentNode.parentNode.previousSibling.remove();
     monedaEliminada.remove();
     eliminarMoneda(arrayMonedas, btn);
@@ -110,15 +105,16 @@ function eliminar(btn) {
 }
 
 function eliminarMoneda(arrayMonedas, btn) {
-  console.log("a")
+  let btnFecha = btn.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.className;
+  let btnNombre = btn.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousElementSibling.textContent;
   for (let i = 0; i < arrayMonedas.length; i++) {
-      if (arrayMonedas[i].fechaActualizacion === btn.parentNode.previousSibling.previousSibling.previousSibling.class) {
+      if (arrayMonedas[i].fechaActualizacion === btnFecha && arrayMonedas[i].nombre === btnNombre) {
         datosLS = datosLS.filter(function (elemento) {
           return !(
             elemento.nombre === arrayMonedas[i].nombre &&
             elemento.compra === arrayMonedas[i].compra &&
             elemento.venta === arrayMonedas[i].venta &&
-            elemento.fechaActualizacion === arrObjMonedas[i].fechaActualizacion
+            elemento.fechaActualizacion === arrayMonedas[i].fechaActualizacion
           );
         });
         break;

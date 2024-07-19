@@ -163,6 +163,8 @@ async function flechaAltaBaja(dato){
 
 compartirInfo.addEventListener("click", function(){
   Swal.fire({
+    background: "#111111",
+    color: "#eabe3f",
     title: "Ingrese sus datos",
     html: `<form id="formulario">
     <label>Nombre</label><br>
@@ -171,7 +173,7 @@ compartirInfo.addEventListener("click", function(){
     <input type="email" id="email" required><br>
     <label>Destinatario</label><br>
     <input type="email" id="destinatario" required><br><br>
-    <button type="button" onclick="enviarEmail()">Enviar</button>
+    <button type="button" onclick="enviarEmail()" style="padding: 5px 10px; color: #000000; background-color: #eabe3f; border: none; border-radius: 5px; cursor: pointer;">Enviar</button>
     </form>`,
     showConfirmButton: false
   });

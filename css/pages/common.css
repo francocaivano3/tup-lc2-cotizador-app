@@ -442,3 +442,7 @@ footer p {
 .menu{
   transform: translate(-100%, 0);
 }
+
+.selector {
+  cursor: pointer;
+}

@@ -10,6 +10,7 @@ const opciones = {
   year: "numeric"
 };
 
+
 window.addEventListener("load", function () {
   if (datosLS.length > 0) {
     cargarDatos();
@@ -122,3 +123,6 @@ function eliminarMoneda(arrayMonedas, btn) {
     }
   ls.setItem("favoritos", JSON.stringify(datosLS));
 }
+
+
+    

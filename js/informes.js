@@ -80,6 +80,8 @@ selector.addEventListener("change", async function(){
     month: "2-digit",
     year: "numeric"
   };
+  
+  let bandera = false;
   if (moneda === "monedas"){
     for(let dato of datosLs){
       let fecha = new Date(dato.fechaActualizacion); 
@@ -97,7 +99,6 @@ selector.addEventListener("change", async function(){
       `
     }
   } else if(moneda !== "monedas"){
-    let bandera = false;
     for (let dato of datosLs){
       if(moneda == dato.nombre){
         let fecha = new Date(dato.fechaActualizacion); 
@@ -121,14 +122,15 @@ selector.addEventListener("change", async function(){
       Swal.fire({
         title: "Advertencia",
         color:"#cccccc",
-       text: `No tienes ${moneda} en favoritos`,
-       icon: "warning",
-       iconColor:"#eabe3f",
-       showCancelButton: false,
-       confirmButtonColor: "#27a545",
-       background: "#111111",
-       confirmButtonText: "Aceptar"
-     })
+        text: `No tienes ${moneda} en favoritos`,
+        icon: "warning",
+        iconColor:"#eabe3f",
+        showCancelButton: false,
+        confirmButtonColor: "#27a545",
+        background: "#111111",
+        confirmButtonText: "Aceptar"
+     });
+
     }
   }
 })
@@ -276,15 +278,3 @@ function msg(bool) {
   }
 }
 
-
-
-
-
-/* <tbody id="tbody">
-<tr>
-  <td>Dólar Oficial</td>
-  <td>27/05/2024</td>
-  <td>$995</td>
-  <td>$1015</td>
-  <td><i class="fa-solid fa-arrow-down"></i></td>
-</tr> */

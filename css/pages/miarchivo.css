@@ -54,6 +54,10 @@ h2 {
 
 #table-container {
   margin-bottom: 80px;
+  display: flex;
+  width: 100%;
+  height: 70vh;
+  overflow: auto;
 }
 
 table#table-main {
@@ -88,6 +92,10 @@ table#table-main {
 
   .td-numeros-compra {
     color: red;
+  }
+
+  main{
+    overflow: hidden;
   }
   
   #table-main tr > td > p {

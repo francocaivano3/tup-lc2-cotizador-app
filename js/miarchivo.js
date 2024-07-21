@@ -1,6 +1,7 @@
 const ls = localStorage
 let datosLS = JSON.parse(ls.getItem("favoritos")) || [];
 const tabla = document.getElementById("table-body");
+const btnImprimir = document.getElementById("imprimir")
 let fechas = [];
 let fechaSinDuplicados = [];
 let cotizacion = ``;
@@ -14,7 +15,6 @@ const opciones = {
 window.addEventListener("load", function () {
   if (datosLS.length > 0) {
     cargarDatos();
-    
   } else {
     Swal.fire({
      title: "Advertencia",
@@ -124,5 +124,12 @@ function eliminarMoneda(arrayMonedas, btn) {
   ls.setItem("favoritos", JSON.stringify(datosLS));
 }
 
+function imprimir() {
+  let contenido = document.getElementById("table-container").innerHTML
+  let contenidoOriginal = document.body.innerHTML;
 
-    
+  document.body.innerHTML = contenido;
+  window.print();
+  document.body.innerHTML = contenidoOriginal;
+}
+
